@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
@@ -39,9 +38,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path('api/token/', TokenObtainPairView.as_view(),
+         name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(),
+         name='token_refresh'),
+    path('api/token/verify/', TokenVerifyView.as_view(),
+         name='token_verify'),
 ]
 
 urlpatterns += [
@@ -52,6 +54,8 @@ urlpatterns += [
 if settings.DEBUG:
     urlpatterns += [
         path('silk/', include('silk.urls', namespace='silk')),
-        path('doc/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-        path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+        path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
+             name='schema-swagger-ui'),
+        path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+             name='schema-redoc'),
     ]

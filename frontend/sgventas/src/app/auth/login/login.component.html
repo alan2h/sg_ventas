@@ -17,15 +17,17 @@
                                     </div>
                                     <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()" class="user">
                                         <div class="form-group">
-                                            <input type="text" formControlName="username" class="form-control form-control-user"
+                                            <input type="text" formControlName="username" class="form-control"
                                                 [ngClass]="{'is-invalid': username?.invalid && (username?.dirty || username?.touched)}"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter username...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" [ngClass]="{'is-invalid': password?.invalid && (password?.dirty && password?.touched)}" formControlName="password" class="form-control form-control-user"
+                                            <input type="password" [ngClass]="{'is-invalid': password?.invalid && (password?.dirty && password?.touched)}" formControlName="password" class="form-control"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
+
+                                        
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
