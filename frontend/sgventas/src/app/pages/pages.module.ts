@@ -11,10 +11,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-
     BaseComponent,
     SideNavComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
