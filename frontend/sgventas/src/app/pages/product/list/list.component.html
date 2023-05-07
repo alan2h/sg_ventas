@@ -2,16 +2,57 @@
  <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
     
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand">Listado de productos</a>
+                <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="search" placeholder="realice una busqueda" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </nav>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-             
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">photo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let product of list.results">
+                        <td>
+                          <img *ngIf="product.photo" width="30px" height="30px" [src]="product.photo" alt="">
+                          <img *ngIf="!product.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.description }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+q
+                  <!-- start pagination -->
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      <li class="page-item disabled">
+                        <a class="page-link">Previous</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <!-- end pagination -->
             </div>
         </div>
     </div>
