@@ -72,3 +72,7 @@ class ProductViewSet(viewsets.ModelViewSet):
             stock=stock,
             stock_min=stock_min
         )
+
+    def perform_destroy(self, instance):
+        instance.active = False
+        instance.save()

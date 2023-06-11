@@ -34,6 +34,10 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.loadData();
+  }
+
+  loadData(){
     this.obs = this.product_service.getAll().subscribe(
       (data) => {
         this.list = data;
@@ -54,10 +58,19 @@ export class ListComponent implements OnInit, OnDestroy {
   }
 
   onDelete(id:number, name:string){
-    this.dialog.open(DialogAnimationsDialogComponent, {
+    const dialog = this.dialog.open(DialogAnimationsDialogComponent, {
       width: '250px',
       data: { id: id, name: name}
     })
+
+    dialog.afterClosed().subscribe(result =>{
+      console.log(result.id)
+      this.product_service.deleteProduct(result.id).subscribe(data => {
+        this.loadData();
+      })
+    })
+
+
   }
 
 }

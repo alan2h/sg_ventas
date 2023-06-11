@@ -31,4 +31,8 @@ export class ProductsService {
     return this.http.post(`${environment.urlBase}/products/api/v1/`, form, {'headers': this.headers})
   }
 
+  deleteProduct(id:number){
+    return this.http.delete(`${environment.urlBase}/products/api/v1/${id}/`, {'headers': this.headers})
+  }
+
 }
