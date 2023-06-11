@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
 
+  file = null;
+
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
@@ -18,6 +20,12 @@ export class CreateComponent implements OnInit {
     stock: new FormControl(''),
     stock_min: new FormControl(''),
   })
+
+  fileName = '';
+
+  onFileSelect(event:any){
+    this.file = event.target.files[0];
+  }
 
   constructor(
     private product_service: ProductsService,
@@ -36,6 +44,9 @@ export class CreateComponent implements OnInit {
       formData.append('price_buy', this.form.get('price_buy')?.value!);
       formData.append('stock', this.form.get('stock')?.value!);
       formData.append('stock_min', this.form.get('stock_min')?.value!);
+      if (this.file){
+        formData.append('photo', this.file);
+      }
       this.product_service.setProduct(formData).subscribe(
         (data)=>{
           this.router.navigate(['/products/list'])          

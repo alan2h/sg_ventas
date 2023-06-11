@@ -22,6 +22,9 @@
                         <th scope="col">photo</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio venta</th>
+                        <th scope="col">Acciones</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -32,21 +35,26 @@
                         </td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.description }}</td>
+                        <td>{{ product.stock }}</td>
+                        <td>{{ product.price_sale }}</td>
+                        <td>
+                          <button type="button" style="margin-right: 3px;" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                          <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </td>
                       </tr>
                     </tbody>
                   </table>
-q
                   <!-- start pagination -->
                   <nav aria-label="...">
                     <ul class="pagination">
                       <li class="page-item disabled">
                         <a class="page-link">Previous</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    
                       <li class="page-item">
                         <a class="page-link" href="#">Next</a>
                       </li>

@@ -3,8 +3,7 @@
  <div class="container-fluid">
 
     <!-- Page Heading -->
-    
-    <!-- DataTales Example -->
+
     <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -13,31 +12,48 @@
                     <button type="submit" class="btn btn-outline-primary">Guardar</button>
                 </nav>
             </div>
-            <div class="card-body">
-                <!-- input control -->
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre</label>
-                            <input type="text" formControlName="name" class="form-control" id="id_name" placeholder="Ingrese un nombre">
+
+    <div class="row">
+        <div class="col">
+             <!-- DataTales Example -->
+          
+                        <div class="card-body">
+                            <!-- input control -->
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Nombre</label>
+                                        <input type="text" formControlName="name" class="form-control" id="id_name" placeholder="Ingrese un nombre">
+                                    </div>
+                            <!-- input control -->
+                            <!-- input control -->
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Descripcion</label>
+                                    <input type="text" class="form-control" formControlName="description" id="id_description" placeholder="Ingrese una descripcion">
+                                </div>
+                            <!-- input control -->
+                            <!-- input control -->
+                                <div class="mb-3">
+                                    <label for="price_sale" class="form-label">Precio de venta</label>
+                                    <input type="number" class="form-control" formControlName="price_sale" id="id_price_sale" placeholder="Precio de venta">
+                                </div>
+                            <!-- input control -->
+                            <!-- input control -->
+                            <div class="mb-3">
+                                <label for="price_buy" class="form-label">Precio de compra</label>
+                                <input type="number" class="form-control" formControlName="price_buy" id="id_price_buy" placeholder="Precio de venta">
+                            </div>
+                        <!-- input control -->
+                            
                         </div>
-                <!-- input control -->
-                <!-- input control -->
+                  
+        </div>
+        <div class="col">
+            <div class="card-body">
+                 <!-- input control -->
                     <div class="mb-3">
-                        <label for="description" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" formControlName="description" id="id_description" placeholder="Ingrese una descripcion">
+                        <label for="photo" class="form-label">Imagen</label>
+                        <input class="form-control" id="photo" type="file" (change)="onFileSelect($event)" />
                     </div>
                 <!-- input control -->
-                <!-- input control -->
-                    <div class="mb-3">
-                        <label for="price_sale" class="form-label">Precio de venta</label>
-                        <input type="number" class="form-control" formControlName="price_sale" id="id_price_sale" placeholder="Precio de venta">
-                    </div>
-                <!-- input control -->
-                <!-- input control -->
-                <div class="mb-3">
-                    <label for="price_buy" class="form-label">Precio de compra</label>
-                    <input type="number" class="form-control" formControlName="price_buy" id="id_price_buy" placeholder="Precio de venta">
-                </div>
-            <!-- input control -->
                 <!-- input control -->
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stock Actual</label>
@@ -52,6 +68,11 @@
                 <!-- input control -->
             </div>
         </div>
-    </form>
+    </div>
+
+
+    </div>
+</form>
+   
 </div>
 <!-- /.container-fluid -->
