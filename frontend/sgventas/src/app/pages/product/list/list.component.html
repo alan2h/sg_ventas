@@ -36,12 +36,15 @@
                         <td>{{ product.name }}</td>
                         <td>{{ product.description }}</td>
                         <td>{{ product.stock }}</td>
-                        <td>{{ product.price_sale }}</td>
+                        <td>{{ product.price_sale | currency }}</td>
                         <td>
                           <button type="button" style="margin-right: 3px;" class="btn btn-info btn-sm">
                             <i class="fa fa-edit"></i>
                           </button>
-                          <button type="button" class="btn btn-danger btn-sm">
+                          <button type="button" style="margin-right: 3px;" class="btn btn-success btn-sm">
+                            <i class="fa fa-eye"></i>
+                          </button>
+                          <button (click)="onDelete(product.id, product.name)" type="button" class="btn btn-danger btn-sm">
                             <i class="fa fa-trash"></i>
                           </button>
                         </td>
@@ -51,12 +54,12 @@
                   <!-- start pagination -->
                   <nav aria-label="...">
                     <ul class="pagination">
-                      <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
+                      <li class="page-item" [ngClass]="{'disabled': list.previous == null}">
+                        <a (click)="previous()" class="page-link" style="cursor: pointer;"><i class="fa fa-arrow-left"  ></i></a>
                       </li>
                     
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                      <li class="page-item" [ngClass]="{'disabled': list.next == null}">
+                        <a (click)="next()" class="page-link" style="cursor: pointer;" ><i class="fa fa-arrow-right"></i></a>
                       </li>
                     </ul>
                   </nav>
@@ -67,3 +70,24 @@
 
 </div>
 <!-- /.container-fluid -->
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

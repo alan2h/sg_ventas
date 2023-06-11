@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { PagesRoutingModule } from './pages-routing.module';
@@ -18,7 +21,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule,
+    MatButtonModule
+  ],
+  exports:[
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class PagesModule { }

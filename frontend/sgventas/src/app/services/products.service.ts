@@ -22,6 +22,11 @@ export class ProductsService {
     return this.http.get<ProductList>(`${environment.urlBase}/products/api/v1/`, {'headers': this.headers })
   }
 
+  getbyUrl(url:string | null): Observable<ProductList>{
+    if (url == null) url = `${environment.urlBase}/products/api/v1/`, {'headers': this.headers }
+    return this.http.get<ProductList>(url, {'headers': this.headers})
+  }
+
   setProduct(form:any) {
     return this.http.post(`${environment.urlBase}/products/api/v1/`, form, {'headers': this.headers})
   }
