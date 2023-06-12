@@ -22,6 +22,9 @@ export class ListComponent implements OnInit, OnDestroy {
 
   obs: Subscription | null = null;
 
+  search_field: string='name'
+  search_value: string=''
+
  products:Product[] = []
 
   constructor(
@@ -71,6 +74,13 @@ export class ListComponent implements OnInit, OnDestroy {
     })
 
 
+  }
+
+  searchProduct(){
+    this.product_service.searchProduct(this.search_field, this.search_value).subscribe(data => {
+      console.log(data);
+      this.list = data;
+    })
   }
 
 }

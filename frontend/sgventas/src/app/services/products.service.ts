@@ -35,4 +35,8 @@ export class ProductsService {
     return this.http.delete(`${environment.urlBase}/products/api/v1/${id}/`, {'headers': this.headers})
   }
 
+  searchProduct(field:string, value:string): Observable<ProductList>{
+    return this.http.get<ProductList>(`${environment.urlBase}/products/api/v1/?${field}=${value}`, {'headers': this.headers})
+  }
+
 }

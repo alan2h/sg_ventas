@@ -9,8 +9,12 @@
             <nav class="navbar navbar-light bg-light justify-content-between">
                 <a class="navbar-brand">Listado de productos</a>
                 <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="realice una busqueda" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                  <select [(ngModel)]="search_field" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2" aria-label="Search">
+                    <option value="name">Nombre</option>
+                    <option value="description">Descricion</option>
+                  </select>
+                  <input [(ngModel)]="search_value" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2" type="search" placeholder="realice una busqueda" aria-label="Search">
+                  <button (click)="searchProduct()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
               </nav>
         </div>
