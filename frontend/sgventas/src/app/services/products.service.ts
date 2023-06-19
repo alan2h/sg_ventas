@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ProductList } from '../interfaces/products';
+import { Product, ProductList } from '../interfaces/products';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +17,9 @@ export class ProductsService {
     this.headers=this.headers.append('authorization', `Bearer ${localStorage.getItem('token')}`)  
    }
 
+  getOne(id:any): Observable<Product>{
+    return this.http.get<Product>(`${environment.urlBase}/products/api/v1/${id}/`, {'headers': this.headers})
+  } 
 
   getAll(): Observable<ProductList>{
     return this.http.get<ProductList>(`${environment.urlBase}/products/api/v1/`, {'headers': this.headers })
@@ -33,6 +36,10 @@ export class ProductsService {
 
   deleteProduct(id:number){
     return this.http.delete(`${environment.urlBase}/products/api/v1/${id}/`, {'headers': this.headers})
+  }
+
+  updateProduct(id: number, body:any){
+    return this.http.put(`${environment.urlBase}/products/api/v1/${id}/`, body, {headers: this.headers} )
   }
 
   searchProduct(field:string, value:string): Observable<ProductList>{

@@ -44,6 +44,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':
             return super().get_serializer(*args, **kwargs)
+        if self.action == 'retrieve':
+            return super().get_serializer(*args, **kwargs)
         kwargs.setdefault('context', self.get_serializer_context())
         return ProductWriteSerializer(*args, **kwargs)
     
@@ -57,6 +59,11 @@ class ProductViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    
+    def perform_update(self, serializer):
+        product = serializer.save()
+        product.active = True
+        product.save()
 
     @transaction.atomic
     def perform_create(self, serializer):

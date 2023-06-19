@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductList, Product } from 'src/app/interfaces/products';
 import { ProductsService } from 'src/app/services/products.service';
 
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationsDialogComponent } from '../../shared/dialog-animations-dialog/dialog-animations-dialog.component';
+
 
 @Component({
   selector: 'app-list',
@@ -29,7 +31,8 @@ export class ListComponent implements OnInit, OnDestroy {
 
   constructor(
     private product_service: ProductsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) { }
 
   ngOnDestroy(): void {
@@ -74,6 +77,10 @@ export class ListComponent implements OnInit, OnDestroy {
     })
 
 
+  }
+
+  edit(id:any){
+    this.router.navigate(['/products/edit/', id])
   }
 
   searchProduct(){
