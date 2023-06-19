@@ -4,7 +4,8 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { PagesRoutingModule } from './product-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditComponent } from './edit/edit.component'
+import { EditComponent } from './edit/edit.component';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditComponent } from './edit/edit.component'
     CommonModule,
     PagesRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbAlertModule
   ]
 })
 export class ProductModule { }

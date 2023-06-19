@@ -5,12 +5,23 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { Observable, Subscription } from 'rxjs';
 
+
+interface Message {
+  type: string,
+  text: string
+}
+
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+
+  message: Message = {
+    type: '',
+    text: ''
+  }
 
   id: any;
   img_product: string = '';
@@ -69,8 +80,11 @@ export class EditComponent implements OnInit {
       if (stock) formData.append('stock', stock.toString());
       if (stock_min) formData.append('stock_min', stock_min.toString());
       this.product_service.updateProduct(this.id, formData).subscribe(data => {
-        console.log(data);
+         
       })
+    }else{
+      this.message.type = 'danger';
+      this.message.text = 'Existe un error en el formulario, no se puede guardar.'
     }
   }
 }
