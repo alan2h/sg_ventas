@@ -13,6 +13,10 @@
                 </nav>
             </div>
 
+    <!-- message start -->
+    <p> <ngb-alert *ngIf="message.type"  [type]="message.type" >{{ message.text }}</ngb-alert> </p>
+    <!-- message end -->
+
     <div class="row">
         <div class="col">
              <!-- DataTales Example -->

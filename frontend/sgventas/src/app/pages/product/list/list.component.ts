@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProductList, Product } from 'src/app/interfaces/products';
 import { ProductsService } from 'src/app/services/products.service';
@@ -8,12 +8,25 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAnimationsDialogComponent } from '../../shared/dialog-animations-dialog/dialog-animations-dialog.component';
 
 
+interface Message {
+  type:string,
+  message:string
+}
+
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit, OnDestroy {
+
+  message: Message = {
+    type: '',
+    message: ''
+  }
+
+  open_view: boolean = false;
 
   list:ProductList = {
     count:    0,
@@ -32,7 +45,8 @@ export class ListComponent implements OnInit, OnDestroy {
   constructor(
     private product_service: ProductsService,
     public dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnDestroy(): void {
@@ -41,6 +55,13 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadData();
+    this.route.queryParams.subscribe(
+      params => { 
+        if (params['type']){
+          this.message.message = params['text'];
+          this.message.type = params['type'];
+        }
+      })
   }
 
   loadData(){
@@ -77,6 +98,14 @@ export class ListComponent implements OnInit, OnDestroy {
     })
 
 
+  }
+
+  closeView(resp:boolean){
+    this.open_view = resp;
+  }
+
+  onView(){
+    this.open_view = true;
   }
 
   edit(id:any){

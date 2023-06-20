@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
+import { Message } from 'src/app/interfaces/message';
 
 @Component({
   selector: 'app-create',
@@ -11,14 +12,15 @@ import { Router } from '@angular/router';
 export class CreateComponent implements OnInit {
 
   file = null;
+  message: Message = {type:'', text:''}
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    price_sale: new FormControl(''),
-    price_buy: new FormControl(''),
-    stock: new FormControl(''),
-    stock_min: new FormControl(''),
+    price_sale: new FormControl('', Validators.required),
+    price_buy: new FormControl('', Validators.required),
+    stock: new FormControl('', Validators.required),
+    stock_min: new FormControl('', Validators.required),
   })
 
   fileName = '';
@@ -53,7 +55,8 @@ export class CreateComponent implements OnInit {
         }
       )
     }else{
-
+      this.message.type = 'danger'
+      this.message.text = 'Existen errores en el formulario.'
     }
   }
 

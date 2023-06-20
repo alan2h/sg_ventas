@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ProductsService } from 'src/app/services/products.service';
@@ -29,20 +29,26 @@ export class EditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private product_service: ProductsService
   ) { }
 
 
   form = new FormGroup({
-    
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
-    price_sale: new FormControl(0),
-    price_buy: new FormControl(0),
-    stock: new FormControl(0),
-    stock_min: new FormControl(0),
-
+    price_sale: new FormControl(0, Validators.required),
+    price_buy: new FormControl(0, Validators.required),
+    stock: new FormControl(0, Validators.required),
+    stock_min: new FormControl(0, Validators.required),
   })
+
+  get name(){ return this.form.get('name') }
+  get description(){ return this.form.get('description') }
+  get price_sale(){ return this.form.get('price_sale') }
+  get price_buy(){ return this.form.get('price_buy') }
+  get stock(){ return this.form.get('stock') }
+  get stock_min(){ return this.form.get('stock_min') }
 
 
   ngOnInit(): void {
@@ -80,7 +86,10 @@ export class EditComponent implements OnInit {
       if (stock) formData.append('stock', stock.toString());
       if (stock_min) formData.append('stock_min', stock_min.toString());
       this.product_service.updateProduct(this.id, formData).subscribe(data => {
-         
+        this.router.navigate(['/products/list'], {queryParams: {
+          'type': 'success',
+          'text': 'producto guardado con exito.'
+        }})         
       })
     }else{
       this.message.type = 'danger';
