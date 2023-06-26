@@ -112,7 +112,6 @@ DATABASES = {
         'ENGINE': env('ENGINE'),
         'NAME': env('NAME'),
         'USER': env('USERDB'),
-        'PASSWORD': env('PASSWORD'),
         'HOST': env('HOST'),
         'PORT': env('PORT')
     }

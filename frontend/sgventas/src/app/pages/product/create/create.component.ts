@@ -1,18 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 import { Message } from 'src/app/interfaces/message';
+
+import { Subscription } from 'rxjs';
+
+import { BrandsService } from '../../../services/products/brands.service';
+import { Brand } from 'src/app/interfaces/brands.interface';
+import { CategoriesService } from 'src/app/services/products/categories.service';
+import { Category } from 'src/app/interfaces/products';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnDestroy {
 
+  brand_subscriptor: Subscription| undefined = undefined;
+  category_subscriptor: Subscription|undefined = undefined;
   file = null;
   message: Message = {type:'', text:''}
+  brands: Brand[] = [];
+  categories: Category[] = [];
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -21,6 +32,8 @@ export class CreateComponent implements OnInit {
     price_buy: new FormControl('', Validators.required),
     stock: new FormControl('', Validators.required),
     stock_min: new FormControl('', Validators.required),
+    brand: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
   })
 
   fileName = '';
@@ -31,14 +44,38 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private product_service: ProductsService,
-    private router: Router
+    private router: Router,
+    private brand_service: BrandsService,
+    private category_service: CategoriesService
   ) { }
 
+  get name() { return this.form.get('name') }
+  get description(){ return this.form.get('description') }
+  get price_sale(){ return this.form.get('price_sale') }
+  get price_buy(){ return this.form.get('price_buy') }
+  get stock(){ return this.form.get('stock') }
+  get stock_min(){ return this.form.get('stock_min') }
+  get brand(){ return this.form.get('brand') }
+  get category(){ return this.form.get('category') }
+
   ngOnInit(): void {
+    this.brand_subscriptor = this.brand_service.get_brands_no_paginated().subscribe(
+      (data)=>{ this.brands = data }
+    )
+    this.category_subscriptor = this.category_service.get_brands_no_paginate().subscribe(
+      (data)=> {this.categories = data}
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.brand_subscriptor?.unsubscribe()
+    this.category_subscriptor?.unsubscribe()
   }
 
   onSubmit(){
+    console.log(this.form.value)
     if (this.form.valid){
+      
       let formData = new FormData();
       formData.append('name', this.form.get('name')?.value!);
       formData.append('description', this.form.get('description')?.value!);
@@ -46,6 +83,8 @@ export class CreateComponent implements OnInit {
       formData.append('price_buy', this.form.get('price_buy')?.value!);
       formData.append('stock', this.form.get('stock')?.value!);
       formData.append('stock_min', this.form.get('stock_min')?.value!);
+      formData.append('brand', this.form.get('brand')?.value!);
+      formData.append('category', this.form.get('category')?.value!);
       if (this.file){
         formData.append('photo', this.file);
       }
@@ -55,6 +94,7 @@ export class CreateComponent implements OnInit {
         }
       )
     }else{
+      this.form.markAllAsTouched()
       this.message.type = 'danger'
       this.message.text = 'Existen errores en el formulario.'
     }

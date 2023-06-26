@@ -52,7 +52,9 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/css/sb-admin-2.min.css",
-              "src/assets/vendor/fontawesome-free/css/all.css"
+              "src/assets/vendor/fontawesome-free/css/all.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
           },

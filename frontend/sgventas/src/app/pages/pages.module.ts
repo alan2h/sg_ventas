@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+
 import { PagesRoutingModule } from './pages-routing.module';
 import { BaseComponent } from './shared/base/base.component';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';

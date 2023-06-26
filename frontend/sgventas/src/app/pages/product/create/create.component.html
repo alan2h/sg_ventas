@@ -25,25 +25,37 @@
                             <!-- input control -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nombre</label>
-                                        <input type="text" formControlName="name" class="form-control" id="id_name" placeholder="Ingrese un nombre">
+                                        <input type="text" formControlName="name" class="form-control" [ngClass]="name?.invalid && (name?.dirty || name?.touched)? 'is-invalid': ''" id="id_name" placeholder="Ingrese un nombre">
+                                        <div class="invalid-feedback">
+                                            Error en el campo Nombre.
+                                        </div>
                                     </div>
                             <!-- input control -->
                             <!-- input control -->
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Descripcion</label>
-                                    <input type="text" class="form-control" formControlName="description" id="id_description" placeholder="Ingrese una descripcion">
+                                    <input type="text" class="form-control" formControlName="description" id="id_description" [ngClass]="description?.invalid && (description?.dirty || description?.touched)?'is-invalid':''" placeholder="Ingrese una descripcion">
+                                    <div class="invalid-feedback">
+                                        Error en el campo Descripcion.
+                                    </div>
                                 </div>
                             <!-- input control -->
                             <!-- input control -->
                                 <div class="mb-3">
                                     <label for="price_sale" class="form-label">Precio de venta</label>
-                                    <input type="number" class="form-control" formControlName="price_sale" id="id_price_sale" placeholder="Precio de venta">
+                                    <input type="number" class="form-control" [ngClass]="price_sale?.invalid && (price_sale?.touched || price_sale?.dirty)?'is-invalid': ''" formControlName="price_sale" id="id_price_sale" placeholder="Precio de venta">
+                                    <div class="invalid-feedback">
+                                        Error en el campo Precio de venta.
+                                    </div>
                                 </div>
                             <!-- input control -->
                             <!-- input control -->
                             <div class="mb-3">
                                 <label for="price_buy" class="form-label">Precio de compra</label>
-                                <input type="number" class="form-control" formControlName="price_buy" id="id_price_buy" placeholder="Precio de venta">
+                                <input type="number" class="form-control" [ngClass]="price_buy?.invalid && (price_buy?.dirty || price_buy?.touched)? 'is-invalid': ''" formControlName="price_buy" id="id_price_buy" placeholder="Precio de venta">
+                                <div class="invalid-feedback">
+                                    Error en el campo Precio de compra.
+                                </div>
                             </div>
                         <!-- input control -->
                             
@@ -56,19 +68,52 @@
                     <div class="mb-3">
                         <label for="photo" class="form-label">Imagen</label>
                         <input class="form-control" id="photo" type="file" (change)="onFileSelect($event)" />
+                        <div class="invalid-feedback">
+                            Error en el campo Imagen.
+                        </div>
                     </div>
                 <!-- input control -->
                 <!-- input control -->
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stock Actual</label>
-                        <input type="number" class="form-control" formControlName="stock" id="id_stock" placeholder="Stock">
+                        <input type="number" class="form-control" [ngClass]="stock?.invalid && (stock?.dirty || stock?.touched)?'is-invalid': ''" formControlName="stock" id="id_stock" placeholder="Stock">
+                        <div class="invalid-feedback">
+                            Error en el campo Stock actual.
+                        </div>
                     </div>
                 <!-- input control -->
                 <!-- input control -->
                     <div class="mb-3">
                         <label for="stock_min" class="form-label">Stock minimo</label>
-                        <input type="number" class="form-control" formControlName="stock_min" id="id_stock_min" placeholder="Stock minimo">
+                        <input type="number" class="form-control" [ngClass]="stock_min?.invalid && (stock_min?.touched || stock_min?.dirty)?'is-invalid':''" formControlName="stock_min" id="id_stock_min" placeholder="Stock minimo">
+                        <div class="invalid-feedback">
+                            Error en el campo Stock minimo.
+                        </div>
                     </div>
+                <!-- input control -->
+
+                 <!-- input control -->
+                 <div class="mb-3">
+                    <label for="id_category" class="form-label">Seleccionar Categoria</label>
+                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category">
+                        <option *ngFor="let item of categories" [value]="item.id">{{ item.description }}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Error en el campo Categorias.
+                    </div>
+                </div>
+                <!-- input control -->
+
+                <!-- input control -->
+                <div class="mb-3">
+                    <label for="id_brand" class="form-label">Seleccionar Marca</label>
+                    <select formControlName="brand" class="form-control" [ngClass]="brand?.invalid &&(brand?.touched || brand?.dirty)?'is-invalid':''" id="id_brand">
+                        <option *ngFor="let item of brands" [value]="item.id">{{ item.description }}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Error en el campo Marcas.
+                    </div>
+                </div>
                 <!-- input control -->
             </div>
         </div>

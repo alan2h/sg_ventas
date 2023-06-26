@@ -10,6 +10,7 @@ from apps.products.filtersets import ProductFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import permissions, viewsets, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser
 
@@ -22,6 +23,14 @@ class BrandViewSet(viewsets.ModelViewSet):
     queryset = Brand.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = BrandSerializer
+    pagination_class = StandardResultsSetPagination
+
+    @action(detail=False, methods=['get'])
+    def get_no_paginated(self, request):
+
+        brands = Brand.objects.all()
+        serializer = self.get_serializer(brands, many=True)
+        return Response(serializer.data)
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -29,6 +38,14 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = CategorySerializer
+    pagination_class = StandardResultsSetPagination
+
+    @action(detail=False, methods=['get'])
+    def get_no_paginated(self, request):
+
+        categories = Category.objects.all()
+        serializer = self.get_serializer(categories, many=True)
+        return Response(serializer.data)
 
 
 class ProductViewSet(viewsets.ModelViewSet):
