@@ -3,7 +3,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ProductsService } from 'src/app/services/products.service';
+import { CategoriesService  } from 'src/app/services/products/categories.service'
+import { BrandsService } from 'src/app/services/products/brands.service';
 import { Observable, Subscription } from 'rxjs';
+import { Brand } from 'src/app/interfaces/brands.interface';
+import { Category } from 'src/app/interfaces/products';
 
 
 interface Message {
@@ -26,11 +30,17 @@ export class EditComponent implements OnInit {
   id: any;
   img_product: string = '';
   obs: Subscription | undefined = undefined;
+  subscription_brands: Subscription | undefined = undefined;
+  subscription_categories: Subscription | undefined = undefined;
+  brands: Brand[] = [];
+  categories: Category[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private product_service: ProductsService
+    private product_service: ProductsService,
+    private brand_service: BrandsService,
+    private category_service: CategoriesService
   ) { }
 
 
@@ -41,6 +51,8 @@ export class EditComponent implements OnInit {
     price_buy: new FormControl(0, Validators.required),
     stock: new FormControl(0, Validators.required),
     stock_min: new FormControl(0, Validators.required),
+    brand: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required)
   })
 
   get name(){ return this.form.get('name') }
@@ -49,6 +61,8 @@ export class EditComponent implements OnInit {
   get price_buy(){ return this.form.get('price_buy') }
   get stock(){ return this.form.get('stock') }
   get stock_min(){ return this.form.get('stock_min') }
+  get brand(){ return this.form.get('brand') }
+  get category(){ return this.form.get('category') }
 
 
   ngOnInit(): void {
@@ -56,6 +70,12 @@ export class EditComponent implements OnInit {
       this.id = params['id'];
       this.loadData(this.id);
     })
+    this.subscription_brands = this.brand_service.get_brands_no_paginated().subscribe(
+      data => this.brands = data
+    )
+    this.subscription_categories = this.category_service.get_brands_no_paginate().subscribe(
+      data => this.categories = data
+    )
   }
 
   loadData(id:any){
@@ -67,7 +87,9 @@ export class EditComponent implements OnInit {
        this.form.controls.price_sale.setValue(parseFloat(data.price_sale));
        this.form.controls.price_buy.setValue(parseFloat(data.price_buy));
        this.form.controls.stock.setValue(data.stock);
-       this.form.controls.stock_min.setValue(data.stock_min);  
+       this.form.controls.stock_min.setValue(data.stock_min);
+       this.form.controls.brand.setValue(data.brand.id.toString());
+       this.form.controls.category.setValue(data.category.id.toString());
     })
   }
 
@@ -81,6 +103,9 @@ export class EditComponent implements OnInit {
       
       formData.append('name', this.form.get('name')?.value!);
       formData.append('description', this.form.get('description')?.value!);
+      formData.append('brand', this.form.get('brand')?.value!);
+      formData.append('category', this.form.get('category')?.value!);
+
       if (price_sale) formData.append('price_sale', price_sale.toString());
       if (price_buy) formData.append('price_buy', price_buy.toString());
       if (stock) formData.append('stock', stock.toString());

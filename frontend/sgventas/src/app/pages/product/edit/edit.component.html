@@ -63,8 +63,8 @@
         <div class="col">
             <div class="card-body">
                  <!-- input control -->
-                 <img *ngIf="!img_product" src="../../../../assets/img/package.png" width="100px" height="100px" alt="" sizes="" >
-                 <img *ngIf="img_product" [src]="img_product" width="100px" height="100px" alt="" sizes="" >
+                 <img *ngIf="!img_product" src="../../../../assets/img/package.png" width="60px" height="60px" alt="" sizes="" >
+                 <img *ngIf="img_product" [src]="img_product" width="60px" height="60px" alt="" sizes="" >
                     <div class="mb-3">
                         <label for="photo" class="form-label">Para cambiar imagen, utilice el boton</label>
                         <input class="form-control" id="photo" type="file" />
@@ -88,6 +88,32 @@
                         </div>
                     </div>
                 <!-- input control -->
+
+                 <!-- input control -->
+                 <div class="mb-3">
+                    <label for="id_category" class="form-label">Seleccionar Categoria</label>
+                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category">
+                        <option *ngFor="let item of categories" [value]="item.id">{{ item.description }}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Error en el campo Categorias.
+                    </div>
+                </div>
+                <!-- input control -->
+
+                <!-- input control -->
+                <div class="mb-3">
+                    <label for="id_brand" class="form-label">Seleccionar Marca</label>
+                    <select formControlName="brand" class="form-control" [ngClass]="brand?.invalid &&(brand?.touched || brand?.dirty)?'is-invalid':''" id="id_brand">
+                        <option *ngFor="let item of brands" [value]="item.id">{{ item.description }}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Error en el campo Marcas.
+                    </div>
+                </div>
+                <!-- input control -->
+
+
             </div>
         </div>
     </div>
