@@ -26,6 +26,8 @@ export class ListComponent implements OnInit, OnDestroy {
     message: ''
   }
 
+  item: Product|undefined = undefined;
+   
   open_view: boolean = false;
 
   list:ProductList = {
@@ -104,8 +106,9 @@ export class ListComponent implements OnInit, OnDestroy {
     this.open_view = resp;
   }
 
-  onView(){
+  onView(item: Product){
     this.open_view = true;
+    this.item = item;
   }
 
   edit(id:any){
