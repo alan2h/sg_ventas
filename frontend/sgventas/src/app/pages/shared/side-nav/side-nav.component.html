@@ -49,6 +49,29 @@
                         <a class="collapse-item" href="#">Más vendidos</a>
                     </div>
                 </div>
+
+
+                
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" (click)="changeStateProduct()" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <fa-icon [icon]="faFolderProduct"></fa-icon>
+                    <span>&nbsp;&nbsp;Clientes</span>
+                </a>
+
+            <div id="collapsePages" [className]="cssProduct" aria-labelledby="headingPages"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Aplicaciones:</h6>
+                    <a class="collapse-item" routerLinkActive="active" [routerLink]="['clients/create']">Cargar</a>
+                    <a class="collapse-item" routerLinkActive="active" [routerLink]="['clients/list']">Listado</a>
+                    <h6 class="collapse-header">Reportes:</h6>
+                    <a class="collapse-item" href="#">Stock</a>
+                    <a class="collapse-item" href="#">Más vendidos</a>
+                </div>
+            </div>
             </li>
 
             <!-- Divider -->
