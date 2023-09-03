@@ -1,1 +1,74 @@
-<p>list works!</p>
+ <!-- Begin Page Content -->
+ <div class="container-fluid">
+
+    <!-- Page Heading -->
+    
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <nav class="navbar navbar-light bg-light justify-content-between">
+                <a class="navbar-brand">Listado de clientes</a>
+                <form class="form-inline">
+                  <select  class="form-control mr-sm-2" aria-label="Search">
+                    <option value="name">Nombre</option>
+                    <option value="description">Descricion</option>
+                  </select>
+                  <input  class="form-control mr-sm-2" type="search" placeholder="realice una busqueda" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+              </nav>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">photo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio venta</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>--</td>
+                        <td>
+                          <button type="button" style="margin-right: 3px;" class="btn btn-info btn-sm">
+                            <i class="fa fa-edit"></i>
+                          </button>
+                          <button type="button" style="margin-right: 3px;" class="btn btn-success btn-sm">
+                            <i class="fa fa-eye"></i>
+                          </button>
+                          <button type="button" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- start pagination -->
+                  <nav aria-label="...">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" style="cursor: pointer;"><i class="fa fa-arrow-left"  ></i></a>
+                      </li>
+                    
+                      <li class="page-item">
+                        <a class="page-link" style="cursor: pointer;" ><i class="fa fa-arrow-right"></i></a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <!-- end pagination -->
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->

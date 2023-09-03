@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 import { PagesRoutingModule } from './pages-routing.module';
@@ -23,11 +25,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     PagesRoutingModule,
     FontAwesomeModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   exports:[
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ]
 })
 export class PagesModule { }

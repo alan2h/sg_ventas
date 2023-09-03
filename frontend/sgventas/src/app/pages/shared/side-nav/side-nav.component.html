@@ -49,27 +49,37 @@
                         <a class="collapse-item" href="#">Más vendidos</a>
                     </div>
                 </div>
-
-
-                
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" (click)="changeStateProduct()" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                <a class="nav-link" (click)="changeStateClient()" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                     aria-controls="collapsePages">
-                    <fa-icon [icon]="faFolderProduct"></fa-icon>
+                    <fa-icon [icon]="faFolderClient"></fa-icon>
                     <span>&nbsp;&nbsp;Clientes</span>
                 </a>
 
-            <div id="collapsePages" [className]="cssProduct" aria-labelledby="headingPages"
+            <div id="collapsePages" [className]="cssClient" aria-labelledby="headingPages"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Aplicaciones:</h6>
                     <a class="collapse-item" routerLinkActive="active" [routerLink]="['clients/create']">Cargar</a>
                     <a class="collapse-item" routerLinkActive="active" [routerLink]="['clients/list']">Listado</a>
-                    <h6 class="collapse-header">Reportes:</h6>
-                    <a class="collapse-item" href="#">Stock</a>
-                    <a class="collapse-item" href="#">Más vendidos</a>
+                </div>
+            </div>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" (click)="changeStateSale()" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                    aria-controls="collapsePages">
+                    <fa-icon [icon]="faFolderSale"></fa-icon>
+                    <span>&nbsp;&nbsp;Ventas</span>
+                </a>
+
+            <div id="collapsePages" [className]="cssSale" aria-labelledby="headingPages"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Aplicaciones:</h6>
+                    <a class="collapse-item" routerLinkActive="active" [routerLink]="['sales/create']">Cargar</a>
                 </div>
             </div>
             </li>

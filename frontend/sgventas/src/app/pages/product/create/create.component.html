@@ -25,7 +25,7 @@
                             <!-- input control -->
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nombre</label>
-                                        <input type="text" formControlName="name" class="form-control" [ngClass]="name?.invalid && (name?.dirty || name?.touched)? 'is-invalid': ''" id="id_name" placeholder="Ingrese un nombre">
+                                        <input type="text" formControlName="name" class="form-control" [ngClass]="name?.invalid && (name?.dirty || name?.touched)? 'is-invalid': ''" id="id_name" placeholder="Ingrese un nombre" >
                                         <div class="invalid-feedback">
                                             Error en el campo Nombre.
                                         </div>
@@ -34,7 +34,7 @@
                             <!-- input control -->
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Descripcion</label>
-                                    <input type="text" class="form-control" formControlName="description" id="id_description" [ngClass]="description?.invalid && (description?.dirty || description?.touched)?'is-invalid':''" placeholder="Ingrese una descripcion">
+                                    <input type="text" class="form-control" formControlName="description" id="id_description" [ngClass]="description?.invalid && (description?.dirty || description?.touched)? 'is-invalid':''" placeholder="Ingrese una descripcion">
                                     <div class="invalid-feedback">
                                         Error en el campo Descripcion.
                                     </div>

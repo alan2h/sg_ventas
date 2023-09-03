@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 import { Message } from 'src/app/interfaces/message';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Subscription } from 'rxjs';
 
@@ -46,7 +47,8 @@ export class CreateComponent implements OnInit, OnDestroy {
     private product_service: ProductsService,
     private router: Router,
     private brand_service: BrandsService,
-    private category_service: CategoriesService
+    private category_service: CategoriesService,
+    private _snackBar: MatSnackBar
   ) { }
 
   get name() { return this.form.get('name') }
@@ -90,6 +92,7 @@ export class CreateComponent implements OnInit, OnDestroy {
       }
       this.product_service.setProduct(formData).subscribe(
         (data)=>{
+          this._snackBar.open('Producto agregado con exito', 'cerrar')
           this.router.navigate(['/products/list'])          
         }
       )

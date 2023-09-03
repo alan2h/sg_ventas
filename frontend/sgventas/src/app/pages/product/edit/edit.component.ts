@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ProductsService } from 'src/app/services/products.service';
 import { CategoriesService  } from 'src/app/services/products/categories.service'
@@ -40,7 +41,8 @@ export class EditComponent implements OnInit {
     private router: Router,
     private product_service: ProductsService,
     private brand_service: BrandsService,
-    private category_service: CategoriesService
+    private category_service: CategoriesService,
+    private _snackBar: MatSnackBar
   ) { }
 
 
@@ -111,10 +113,12 @@ export class EditComponent implements OnInit {
       if (stock) formData.append('stock', stock.toString());
       if (stock_min) formData.append('stock_min', stock_min.toString());
       this.product_service.updateProduct(this.id, formData).subscribe(data => {
-        this.router.navigate(['/products/list'], {queryParams: {
-          'type': 'success',
-          'text': 'producto guardado con exito.'
-        }})         
+        //this.router.navigate(['/products/list'], {queryParams: {
+        //  'type': 'success',
+        //  'text': 'producto guardado con exito.'
+        //}})
+        this._snackBar.open('Se edito el producto', 'cerrar')
+        this.router.navigate(['/products/list'])         
       })
     }else{
       this.message.type = 'danger';
