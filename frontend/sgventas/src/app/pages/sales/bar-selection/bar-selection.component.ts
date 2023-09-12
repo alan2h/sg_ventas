@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TypePay } from 'src/app/interfaces/typePay';
 
 @Component({
@@ -8,6 +8,7 @@ import { TypePay } from 'src/app/interfaces/typePay';
 })
 export class BarSelectionComponent implements OnInit {
 
+  @Output() selecTypePay: EventEmitter<Boolean> = new EventEmitter();
   type_pay:any = new TypePay(); 
   select = '';
 
@@ -16,6 +17,9 @@ export class BarSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selection(select:string){ this.select = select; }
+  selection(select:string){ 
+    this.select = select; 
+    this.selecTypePay.emit(true);
+  }
 
 }

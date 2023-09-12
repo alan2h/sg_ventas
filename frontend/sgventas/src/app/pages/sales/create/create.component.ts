@@ -8,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  
+  show_sale_detail: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showDetail(response:any){
+    console.log(response)
+    this.show_sale_detail = response;
   }
 
 }

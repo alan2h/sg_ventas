@@ -55,6 +55,12 @@ class Product(models.Model):
         blank=True
     )
 
+    barcode = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True
+    )
+
     photo = models.ImageField(upload_to='products',
                               null=True,
                               blank=True)

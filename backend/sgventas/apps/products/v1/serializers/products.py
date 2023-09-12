@@ -29,6 +29,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class ProductWriteSerializer(serializers.ModelSerializer):
 
+    barcode = serializers.CharField(
+        max_length=200,
+        required=True
+    )
+
     class Meta:
         model = Product
         fields = '__all__'

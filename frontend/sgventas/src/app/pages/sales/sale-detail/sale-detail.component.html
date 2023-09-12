@@ -1,7 +1,7 @@
       
                <!-- DataTales Example -->
                <div class="card shadow mb-4">
-                <div class="card-header py-3">
+                <div class="card-header py-3" *ngIf="show">
                     <nav class="navbar navbar-light bg-light justify-content-between">
                         <form class="form-inline">
                           <input  class="form-control mr-sm-2" type="search" placeholder="Ingrese codigo de barras" aria-label="Search">
@@ -14,7 +14,7 @@
                       </nav>
                 </div>
         
-                <div class="card-body">
+                <div *ngIf="show" class="card-body">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

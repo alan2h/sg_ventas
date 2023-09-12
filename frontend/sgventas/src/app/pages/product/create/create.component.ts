@@ -28,6 +28,7 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   form = new FormGroup({
     name: new FormControl('', Validators.required),
+    barcode: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     price_sale: new FormControl('', Validators.required),
     price_buy: new FormControl('', Validators.required),
@@ -52,6 +53,7 @@ export class CreateComponent implements OnInit, OnDestroy {
   ) { }
 
   get name() { return this.form.get('name') }
+  get barcode() { return this.form.get('barcode') }
   get description(){ return this.form.get('description') }
   get price_sale(){ return this.form.get('price_sale') }
   get price_buy(){ return this.form.get('price_buy') }
