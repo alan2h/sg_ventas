@@ -8,6 +8,7 @@ export interface ProductList {
 export interface Product {
     id:          number;
     name:        string;
+    barcode?:      string;
     description: string;
     photo:       string;
     brand:       Brand;

@@ -5,6 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -12,6 +13,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { BaseComponent } from './shared/base/base.component';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { Error404Component } from './error404/error404.component';
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BaseComponent,
     SideNavComponent,
     DashboardComponent,
+    Error404Component,
   ],
   imports: [
     CommonModule,
@@ -26,12 +29,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FontAwesomeModule,
     MatDialogModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   exports:[
     MatDialogModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ]
 })
 export class PagesModule { }

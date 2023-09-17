@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ListProductsComponent } from '../list-products/list-products.component';
 
 @Component({
   selector: 'app-sale-detail',
@@ -9,7 +11,17 @@ export class SaleDetailComponent implements OnInit {
 
   @Input() show: boolean = false;
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
+
+  openDialogProductList() {
+    const dialogRef = this.dialog.open(ListProductsComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
   }

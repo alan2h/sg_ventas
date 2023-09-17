@@ -30,6 +30,7 @@
                       <tr>
                         <th scope="col">photo</th>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Codigo</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Stock</th>
                         <th scope="col">Precio venta</th>
@@ -43,6 +44,7 @@
                           <img *ngIf="!product.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
                         </td>
                         <td>{{ product.name }}</td>
+                        <td>{{ product.barcode }}</td>
                         <td>{{ product.description }}</td>
                         <td>{{ product.stock }}</td>
                         <td>{{ product.price_sale | currency }}</td>

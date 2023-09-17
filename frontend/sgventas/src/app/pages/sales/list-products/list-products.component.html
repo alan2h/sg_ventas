@@ -1,0 +1,31 @@
+<div class="card-body">
+  <div class="table-responsive">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">photo</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Codigo</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Precio venta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="cursor: pointer;" *ngFor="let item of products" >
+              <td>
+                <img *ngIf="item.photo" width="30px" height="30px"  alt="" [src]="item.photo" >
+                <img *ngIf="!item.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
+              </td>
+              <td>{{ 'product.name' }}</td>
+              <td>{{ 'product.barcode' }}</td>
+              <td>{{ 'product.description' }}</td>
+              <td>{{ 'product.stock' }}</td>
+              <td>{{ 'product.price_sale | currency' }}</td>
+              <td>
+                
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    

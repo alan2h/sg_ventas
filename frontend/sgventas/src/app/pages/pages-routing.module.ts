@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 // components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BaseComponent } from './shared/base/base.component';
+import { Error404Component } from './error404/error404.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +24,11 @@ const routes: Routes = [{
     {
       path: 'sales',
       loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule)
+    },
+    {
+      path: '**',
+      pathMatch: 'full',
+      component: Error404Component
     }
   ]
 }];

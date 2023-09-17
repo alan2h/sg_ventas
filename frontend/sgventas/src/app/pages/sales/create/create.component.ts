@@ -10,7 +10,8 @@ export class CreateComponent implements OnInit {
 
   show_sale_detail: boolean = false;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

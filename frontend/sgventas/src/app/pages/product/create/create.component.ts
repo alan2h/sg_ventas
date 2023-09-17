@@ -82,6 +82,7 @@ export class CreateComponent implements OnInit, OnDestroy {
       
       let formData = new FormData();
       formData.append('name', this.form.get('name')?.value!);
+      formData.append('barcode', this.form.get('barcode')?.value!);
       formData.append('description', this.form.get('description')?.value!);
       formData.append('price_sale', this.form.get('price_sale')?.value!);
       formData.append('price_buy', this.form.get('price_buy')?.value!);

@@ -80,6 +80,7 @@ class ProductReadSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
+            'barcode',
             'description',
             'photo',
             'brand',
