@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from 'src/app/services/products.service';
 import { CategoriesService  } from 'src/app/services/products/categories.service'
 import { BrandsService } from 'src/app/services/products/brands.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Brand } from 'src/app/interfaces/brands.interface';
 import { Category } from 'src/app/interfaces/products';
 
@@ -49,6 +49,7 @@ export class EditComponent implements OnInit {
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
+    barcode: new FormControl('', Validators.required),
     price_sale: new FormControl(0, Validators.required),
     price_buy: new FormControl(0, Validators.required),
     stock: new FormControl(0, Validators.required),
@@ -59,6 +60,7 @@ export class EditComponent implements OnInit {
 
   get name(){ return this.form.get('name') }
   get description(){ return this.form.get('description') }
+  get barcode(){ return this.form.get('barcode') }
   get price_sale(){ return this.form.get('price_sale') }
   get price_buy(){ return this.form.get('price_buy') }
   get stock(){ return this.form.get('stock') }
@@ -82,10 +84,10 @@ export class EditComponent implements OnInit {
 
   loadData(id:any){
     this.product_service.getOne(id).subscribe(data => {
-      console.log(data);
        this.img_product = data.photo;
        this.form.controls.name.setValue(data.name);
        this.form.controls.description.setValue(data.description);
+       this.form.controls.barcode.setValue(data.barcode!);
        this.form.controls.price_sale.setValue(parseFloat(data.price_sale));
        this.form.controls.price_buy.setValue(parseFloat(data.price_buy));
        this.form.controls.stock.setValue(data.stock);
@@ -105,6 +107,7 @@ export class EditComponent implements OnInit {
       
       formData.append('name', this.form.get('name')?.value!);
       formData.append('description', this.form.get('description')?.value!);
+      formData.append('barcode', this.form.get('barcode')?.value!);
       formData.append('brand', this.form.get('brand')?.value!);
       formData.append('category', this.form.get('category')?.value!);
 

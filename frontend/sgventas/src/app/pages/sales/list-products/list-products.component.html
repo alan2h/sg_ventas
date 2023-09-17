@@ -1,3 +1,17 @@
+<div class="card-header py-3">
+  <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Listado de productos</a>
+      <form class="form-inline">
+        <select class="form-control mr-sm-2" aria-label="Search">
+          <option value="name">Nombre</option>
+          <option value="description">Descricion</option>
+        </select>
+        <input class="form-control mr-sm-2" type="search" placeholder="realice una busqueda" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </nav>
+</div>
+
 <div class="card-body">
   <div class="table-responsive">
       <table class="table">
@@ -17,11 +31,11 @@
                 <img *ngIf="item.photo" width="30px" height="30px"  alt="" [src]="item.photo" >
                 <img *ngIf="!item.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
               </td>
-              <td>{{ 'product.name' }}</td>
-              <td>{{ 'product.barcode' }}</td>
-              <td>{{ 'product.description' }}</td>
-              <td>{{ 'product.stock' }}</td>
-              <td>{{ 'product.price_sale | currency' }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.barcode }}</td>
+              <td>{{ item.description }}</td>
+              <td>{{ item.stock }}</td>
+              <td>{{ item.price_sale | currency }}</td>
               <td>
                 
               </td>

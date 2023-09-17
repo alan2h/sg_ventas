@@ -40,6 +40,15 @@
                             <!-- input control -->
                             <!-- input control -->
                                 <div class="mb-3">
+                                    <label for="barcode" class="form-label">Código de barras</label>
+                                    <input type="text" class="form-control" [ngClass]="barcode?.invalid && (barcode?.dirty || barcode?.touched)? 'is-invalid': ''" formControlName="barcode"  id="id_barcode" placeholder="Ingrese un codigo de barras">
+                                    <div class="invalid-feedback">
+                                        Error en el campo Descripcion.
+                                    </div>
+                                </div>
+                            <!-- input control -->
+                            <!-- input control -->
+                                <div class="mb-3">
                                     <label for="price_sale" class="form-label">Precio de venta</label>
                                     <input type="number" class="form-control" [ngClass]="price_sale?.invalid && (price_sale?.dirty || price_sale?.touched)? 'is-invalid': ''"  formControlName="price_sale" id="id_price_sale" placeholder="Precio de venta">
                                     <div class="invalid-feedback">
