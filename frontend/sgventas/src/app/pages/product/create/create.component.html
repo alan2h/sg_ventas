@@ -67,21 +67,22 @@
                                 </div>
                             </div>
                         <!-- input control -->
+                        <!-- input control -->
+                            <div class="mb-3">
+                                <label for="photo" class="form-label">Imagen</label>
+                                <input class="form-control" id="photo" type="file" (change)="onFileSelect($event)" />
+                                <div class="invalid-feedback">
+                                    Error en el campo Imagen.
+                                </div>
+                            </div>
+                        <!-- input control -->
                             
                         </div>
                   
         </div>
         <div class="col">
             <div class="card-body">
-                 <!-- input control -->
-                    <div class="mb-3">
-                        <label for="photo" class="form-label">Imagen</label>
-                        <input class="form-control" id="photo" type="file" (change)="onFileSelect($event)" />
-                        <div class="invalid-feedback">
-                            Error en el campo Imagen.
-                        </div>
-                    </div>
-                <!-- input control -->
+                
                 <!-- input control -->
                     <div class="mb-3">
                         <label for="stock" class="form-label">Stock Actual</label>
@@ -104,9 +105,12 @@
                  <!-- input control -->
                  <div class="mb-3">
                     <label for="id_category" class="form-label">Seleccionar Categoria</label>
-                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category">
+                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category" style="width: 80%;">
                         <option *ngFor="let item of categories" [value]="item.id">{{ item.description }}</option>
                     </select>
+                    <button class="btn btn-primary" (click)="openCategory(content_category)" style="border: solid 1px; width: 10%; position: absolute; left: 80%; top: 40%;" type="button">
+                        <i class="fa fa-plus"></i>
+                    </button>
                     <div class="invalid-feedback">
                         Error en el campo Categorias.
                     </div>
@@ -116,13 +120,17 @@
                 <!-- input control -->
                 <div class="mb-3">
                     <label for="id_brand" class="form-label">Seleccionar Marca</label>
-                    <select formControlName="brand" class="form-control" [ngClass]="brand?.invalid &&(brand?.touched || brand?.dirty)?'is-invalid':''" id="id_brand">
+                    <select formControlName="brand" class="form-control" [ngClass]="brand?.invalid &&(brand?.touched || brand?.dirty)?'is-invalid':''" id="id_brand" style="width: 80%;">
                         <option *ngFor="let item of brands" [value]="item.id">{{ item.description }}</option>
                     </select>
+                    
+                    <button class="btn btn-primary" (click)="openBrand(content_brand)" style="border: solid 1px; width: 10%; position: absolute; left: 80%; top: 55%;" type="button">
+                        <i class="fa fa-plus"></i>
+                    </button>
                     <div class="invalid-feedback">
                         Error en el campo Marcas.
                     </div>
-                </div>
+                </div>                 
                 <!-- input control -->
             </div>
         </div>
@@ -131,6 +139,22 @@
 
     </div>
 </form>
-   
+
+<ng-template #content_brand let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Marca</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <app-brand></app-brand>
+</ng-template>
+
+<ng-template #content_category let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Categoria</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <app-category></app-category>
+</ng-template>
+
 </div>
 <!-- /.container-fluid -->

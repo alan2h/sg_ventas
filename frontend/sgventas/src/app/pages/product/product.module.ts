@@ -7,6 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewComponent } from './view/view.component';
+import { BrandComponent } from './brand/brand.component';
+import { CategoryComponent } from './category/category.component';
+import { SubcategoryComponent } from './subcategory/subcategory.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { ViewComponent } from './view/view.component';
     CreateComponent,
     ListComponent,
     EditComponent,
-    ViewComponent
+    ViewComponent,
+    BrandComponent,
+    CategoryComponent,
+    SubcategoryComponent
   ],
   imports: [
     CommonModule,
