@@ -113,7 +113,8 @@ DATABASES = {
         'NAME': env('NAME'),
         'USER': env('USERDB'),
         'HOST': env('HOST'),
-        'PORT': env('PORT')
+        'PORT': env('PORT'),
+        'PASSWORD': '$[4C9sQl+£*3',
     }
 }
 

@@ -43,6 +43,21 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
+class SubCategory(models.Model):
+
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE
+    )
+
+    name = models.CharField(
+        max_length=30
+    )
+
+    def __str__(self):
+        return str(self.name)
+
+
 class Product(models.Model):
 
     name = models.CharField(
@@ -77,6 +92,13 @@ class Product(models.Model):
         blank=True,
         on_delete=models.SET_NULL)
 
+    sub_category = models.ForeignKey(
+        SubCategory,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
+
     price_sale = models.DecimalField(
         decimal_places=2,
         max_digits=12
@@ -94,6 +116,11 @@ class Product(models.Model):
 
     active = models.BooleanField(
         default=True
+    )
+
+    iva = models.IntegerField(
+        default=21,
+        help_text='no is required, but default is 21%'
     )
 
     objects = ProductActiveManager()

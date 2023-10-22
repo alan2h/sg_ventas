@@ -1,5 +1,11 @@
 
-from apps.products.models import Brand, Category, Product, StockBranch
+from apps.products.models import (
+    Brand,
+    Category,
+    SubCategory,
+    Product,
+    StockBranch
+)
 
 from crum import get_current_request
 from rest_framework import serializers
@@ -25,6 +31,23 @@ class CategorySerializer(serializers.ModelSerializer):
             'name',
             'description'
         )
+
+
+class SubCategoryWriteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = SubCategory
+        fields = '__all__'
+
+
+class SubCategoryReadSerializer(serializers.ModelSerializer):
+
+    category = CategorySerializer()
+
+    class Meta:
+        model = SubCategory
+        fields = '__all__'
 
 
 class ProductWriteSerializer(serializers.ModelSerializer):
@@ -56,6 +79,7 @@ class ProductReadSerializer(serializers.ModelSerializer):
 
     brand = BrandSerializer()
     category = CategorySerializer()
+    sub_category = SubCategoryReadSerializer()
     stock = serializers.SerializerMethodField()
     stock_min = serializers.SerializerMethodField()
 
@@ -85,6 +109,7 @@ class ProductReadSerializer(serializers.ModelSerializer):
             'photo',
             'brand',
             'category',
+            'sub_category',
             'price_sale',
             'price_buy',
             'observation',

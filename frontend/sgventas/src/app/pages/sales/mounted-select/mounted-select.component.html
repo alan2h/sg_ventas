@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Agregar cantidad para {{ data.item.name }} </h1>
+<div mat-dialog-content>
+  <input type="number" [(ngModel)]="mount" class="form-control" />  
+</div>
+<br>
+<div mat-dialog-actions>
+  <button class="btn btn-default" (click)="onNoClick()" >Cerrar</button>
+  <button class="btn btn-success" (click)="addMount()"  cdkFocusInitial>Aceptar</button>
+</div>

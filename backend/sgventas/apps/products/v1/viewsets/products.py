@@ -1,9 +1,10 @@
 
 # models
 from apps.branches.models import Branch
-from apps.products.models import Brand, Category, Product, StockBranch
+from apps.products.models import Brand, Category, Product, StockBranch, SubCategory
 from apps.products.v1.serializers import (BrandSerializer, CategorySerializer,
-                                          ProductReadSerializer, ProductWriteSerializer)
+                                          ProductReadSerializer, ProductWriteSerializer,
+                                          SubCategoryReadSerializer, SubCategoryWriteSerializer)
 from apps.utils.paginations import StandardResultsSetPagination
 from apps.products.filtersets import ProductFilter
 
@@ -46,6 +47,21 @@ class CategoryViewSet(viewsets.ModelViewSet):
         categories = Category.objects.all()
         serializer = self.get_serializer(categories, many=True)
         return Response(serializer.data)
+
+
+class SubCategoryViewSet(viewsets.ModelViewSet):
+
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategoryReadSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_serializer(self, *args, **kwargs):
+        if self.action == 'list':
+            return super().get_serializer(*args, **kwargs)
+        if self.action == 'retrieve':
+            return super().get_serializer(*args, **kwargs)
+        kwargs.setdefault('context', self.get_serializer_context())
+        return SubCategoryWriteSerializer(*args, **kwargs)
 
 
 class ProductViewSet(viewsets.ModelViewSet):

@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   onSubmit(){
-    console.log(this.ProductForm.value)
     if (this.ProductForm.valid){
       this.login_service.getToken(this.ProductForm.value).subscribe(data => {
         this.login_interface = data;
