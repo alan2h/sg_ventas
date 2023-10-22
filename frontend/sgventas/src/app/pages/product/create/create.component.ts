@@ -4,6 +4,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Router } from '@angular/router';
 import { Message } from 'src/app/interfaces/message';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Subscription } from 'rxjs';
 
@@ -49,7 +50,9 @@ export class CreateComponent implements OnInit, OnDestroy {
     private router: Router,
     private brand_service: BrandsService,
     private category_service: CategoriesService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    config: NgbModalConfig,
+    private modalService: NgbModal,
   ) { }
 
   get name() { return this.form.get('name') }
@@ -104,6 +107,14 @@ export class CreateComponent implements OnInit, OnDestroy {
       this.message.type = 'danger'
       this.message.text = 'Existen errores en el formulario.'
     }
+  }
+
+  openBrand(content: any){
+    this.modalService.open(content);
+  }
+
+  openCategory(content: any){
+    this.modalService.open(content);
   }
 
 }

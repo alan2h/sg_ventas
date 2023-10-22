@@ -105,31 +105,16 @@
                  <!-- input control -->
                  <div class="mb-3">
                     <label for="id_category" class="form-label">Seleccionar Categoria</label>
-                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category">
+                    <select formControlName="category" class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category" style="width: 80%;">
                         <option *ngFor="let item of categories" [value]="item.id">{{ item.description }}</option>
                     </select>
+                    <button class="btn btn-primary" (click)="openCategory(content_category)" style="border: solid 1px; width: 10%; position: absolute; left: 80%; top: 40%;" type="button">
+                        <i class="fa fa-plus"></i>
+                    </button>
                     <div class="invalid-feedback">
                         Error en el campo Categorias.
                     </div>
                 </div>
-                <div class="d-grid gap-1">
-                    <button class="btn btn-primary" width="9px" heigth="10%" type="button">Agregar categoria</button>
-                </div>  
-                <!-- input control -->
-
-                <!-- input control -->
-                 <div class="mb-3">
-                    <label for="id_category" class="form-label">Seleccionar SubCategoria</label>
-                    <select formControlName="category"  class="form-control" [ngClass]="category?.invalid && (category?.touched || category?.dirty)?'is-invalid':''" name="" id="id_category">
-                        <option *ngFor="let item of categories" [value]="item.id">{{ item.description }}</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Error en el campo Categorias.
-                    </div>
-                </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="button">Agregar sub-categoria</button>
-                </div>  
                 <!-- input control -->
 
                 <!-- input control -->
@@ -139,7 +124,7 @@
                         <option *ngFor="let item of brands" [value]="item.id">{{ item.description }}</option>
                     </select>
                     
-                    <button class="btn btn-primary" style="border: solid 1px; width: 10%; position: absolute; left: 80%; bottom: 8%;" type="button">
+                    <button class="btn btn-primary" (click)="openBrand(content_brand)" style="border: solid 1px; width: 10%; position: absolute; left: 80%; top: 55%;" type="button">
                         <i class="fa fa-plus"></i>
                     </button>
                     <div class="invalid-feedback">
@@ -154,6 +139,22 @@
 
     </div>
 </form>
-   
+
+<ng-template #content_brand let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Marca</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <app-brand></app-brand>
+</ng-template>
+
+<ng-template #content_category let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Agregar Categoria</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <app-category></app-category>
+</ng-template>
+
 </div>
 <!-- /.container-fluid -->
