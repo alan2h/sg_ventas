@@ -6,9 +6,9 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'', ProductViewSet)
-router.register(r'brand', BrandViewSet)
-router.register(r'categories', CategoryViewSet)
-router.register(r'subcategories', SubCategoryViewSet)
+router.register(r'brand/api', BrandViewSet)
+router.register(r'categories/api', CategoryViewSet)
+router.register(r'subcategories/api', SubCategoryViewSet)
 
 urlpatterns = [
     path('api/v1/', include(router.urls))

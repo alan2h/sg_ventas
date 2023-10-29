@@ -19,7 +19,7 @@ export class BrandsService {
   }
 
   get_brands_no_paginated(): Observable<Brand[]>{
-    return this.http.get<Brand[]>(`${environment.urlBase}/products/api/v1/brand/get_no_paginated/`, {headers: this.headers})
+    return this.http.get<Brand[]>(`${environment.urlBase}/products/api/v1/brand/api/get_no_paginated/`, {headers: this.headers})
   }
 
 }
