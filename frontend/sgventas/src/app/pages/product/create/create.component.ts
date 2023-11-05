@@ -67,8 +67,14 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.brand_subscriptor = this.brand_service.get_brands_no_paginated().subscribe(
-      (data)=>{ this.brands = data }
+      (data)=>{ 
+        this.brands = data;
+      }
     )
+    this.loadCategory();
+  }
+
+  loadCategory(){
     this.category_subscriptor = this.category_service.get_brands_no_paginate().subscribe(
       (data)=> {this.categories = data}
     )
@@ -115,6 +121,10 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   openCategory(content: any){
     this.modalService.open(content);
+  }
+
+  onSaved(){
+    this.loadCategory();
   }
 
 }

@@ -1,5 +1,7 @@
 <div class="modal-body">
-      <input type="text" class="form-control" [(ngModel)]="name" [ngClass]="name == ''? 'is-invalid': ''"  />
+  <input type="text" class="form-control" [(ngModel)]="name" [ngClass]="name == ''? 'is-invalid': ''"  />
+  <br />
+  <input type="text" class="form-control" [(ngModel)]="description"  />
       <br/>
        <button type="submit" class="btn btn-primary" *ngIf="name != ''" (click)="onSubmit()">Guardar</button>
     <div class="dropdown-divider"></div>
