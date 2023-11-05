@@ -10,6 +10,7 @@ import { ViewComponent } from './view/view.component';
 import { BrandComponent } from './brand/brand.component';
 import { CategoryComponent } from './category/category.component';
 import { SubcategoryComponent } from './subcategory/subcategory.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SubcategoryComponent } from './subcategory/subcategory.component';
     PagesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbAlertModule
+    NgbAlertModule,
+    FontAwesomeModule
   ]
 })
 export class ProductModule { }

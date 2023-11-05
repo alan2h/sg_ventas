@@ -10,6 +10,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -17,7 +18,17 @@
           <tr *ngFor="let item of categories">
             <th scope="row">{{ item.id }}</th>
             <td>{{ item.name }}</td>
-            <td>Otto</td>
+            <td>{{ item.description }}</td>
+            <td>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-primary me-md-2" type="button">
+                  <fa-icon [icon]="faFolderPencil"></fa-icon>
+                </button>
+                <button (click)="delete(item)" class="btn btn-danger" type="button">
+                  <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>

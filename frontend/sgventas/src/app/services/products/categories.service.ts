@@ -32,4 +32,12 @@ export class CategoriesService {
     return this.http.post(`${environment.urlBase}/products/api/v1/categories/api/`, form, {headers: this.headers})
   } 
 
+  delete_category(id: any){
+    return this.http.delete(`${environment.urlBase}/products/api/v1/categories/api/${id}/`, {headers: this.headers})
+  }
+
+  update_category(id:any, form:any){
+    return this.http.put(`${environment.urlBase}/products/api/v1/categories/api/${id}/`,form, {headers: this.headers})
+  }
+
 }
