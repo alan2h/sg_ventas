@@ -116,7 +116,7 @@ DATABASES = {
         'PORT': env('PORT')
     }
 }
-# este es la cong de la apis
+# este es la cong de la apis asdasd
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
