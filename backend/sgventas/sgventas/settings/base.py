@@ -113,7 +113,8 @@ DATABASES = {
         'NAME': env('NAME'),
         'USER': env('USERDB'),
         'HOST': env('HOST'),
-        'PORT': env('PORT')
+        'PORT': env('PORT'),
+        'PASSWORD': "$[4C9sQl+£*3",  # TODO repalce this part in enviroment
     }
 }
 # este es la cong de la apis asdasd
