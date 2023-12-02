@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {FormsModule} from '@angular/forms';
+import { SalesService } from 'src/app/services/sales.service';
 
 
 @Component({
@@ -10,10 +11,11 @@ import {FormsModule} from '@angular/forms';
 })
 export class MountedSelectComponent implements OnInit {
 
-  mount: number = 0;
+  mount: number = 1;
 
   constructor(
     public dialogRef: MatDialogRef<MountedSelectComponent>,
+    private sale_service: SalesService,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
@@ -26,8 +28,9 @@ export class MountedSelectComponent implements OnInit {
 
   addMount(){
     this.data.item.mount = this.mount;
-    console.log(this.data, '=====')
-    this.mount = 0;
+    this.data.item.total_price = this.mount * this.data.item.price_sale;
+    this.sale_service.addProductSelected(this.data.item);
+    this.mount = 1;
     this.dialogRef.close();
   }
 

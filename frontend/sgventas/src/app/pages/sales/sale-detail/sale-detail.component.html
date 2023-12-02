@@ -1,4 +1,4 @@
-      
+
                <!-- DataTales Example -->
                <div class="card shadow mb-4">
                 <div class="card-header py-3" *ngIf="show">
@@ -13,7 +13,7 @@
                         </form>
                       </nav>
                 </div>
-        
+
                 <div *ngIf="show" class="card-body">
                     <div class="table-responsive">
                         <table class="table">
@@ -22,25 +22,26 @@
                                 <th scope="col">photo</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
-                                <th scope="col">Stock</th>
-                                <th scope="col">Precio venta</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio total</th>
                                 <th scope="col">Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
-                                <td>--</td>
+                              <tr *ngFor="let item of products">
+                                <td>
+                                  <img *ngIf="item.photo" width="30px" height="30px"  alt="" [src]="item.photo" >
+                                  <img *ngIf="!item.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
+                                </td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.description }}</td>
+                                <td>{{ item.mount }}</td>
+                                <td>{{ item.total_price?.toString()| currency }}</td>
                                 <td>
                                   <button type="button" style="margin-right: 3px;" class="btn btn-info btn-sm">
-                                    <i class="fa fa-edit"></i>
+                                    <i class="fa fa-plus"></i>
                                   </button>
-                                  <button type="button" style="margin-right: 3px;" class="btn btn-success btn-sm">
-                                    <i class="fa fa-eye"></i>
-                                  </button>
+
                                   <button type="button" class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
                                   </button>
@@ -54,13 +55,26 @@
                               <li class="page-item">
                                 <a class="page-link" style="cursor: pointer;"><i class="fa fa-arrow-left"  ></i></a>
                               </li>
-                            
+
                               <li class="page-item">
                                 <a class="page-link" style="cursor: pointer;" ><i class="fa fa-arrow-right"></i></a>
                               </li>
                             </ul>
                           </nav>
                           <!-- end pagination -->
+
                     </div>
+
+                    <br>
+                    <br>
+                    <div *ngIf="show" class="footer_prices">
+                      <h1>Total 10000</h1>
+                      <input class="form-control" placeholder="Abono con ..."  type="number" name="" id="">
+                      <br>
+                      <input class="form-control" placeholder="devolver ..." disabled  type="number" name="" id="">
+                    </div>
+
+
                 </div>
+
             </div>

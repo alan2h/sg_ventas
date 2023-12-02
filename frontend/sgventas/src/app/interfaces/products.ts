@@ -18,6 +18,8 @@ export interface Product {
     observation: string;
     stock:       number;
     stock_min:   number;
+    mount?: number;
+    total_price?: Float32Array;
 }
 
 export interface Brand {
@@ -31,4 +33,13 @@ export interface Category{
     id:          number;
     name:        string;
     description: string;
+}
+
+
+export interface ProductSelected {
+  id:          number;
+  name:        string;
+  description: string;
+  mount:       number;
+  price:       Float32Array;
 }

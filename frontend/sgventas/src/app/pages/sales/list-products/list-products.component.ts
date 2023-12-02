@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/interfaces/products';
 import { MountedSelectComponent } from '../mounted-select/mounted-select.component';
 import { MatDialog } from '@angular/material/dialog';
+import { SalesService } from 'src/app/services/sales.service';
 
 
 
@@ -18,17 +19,22 @@ export class ListProductsComponent implements OnInit {
   name: string='';
 
   obs: Subscription | undefined = undefined;
-  products: Product[] = []; 
+  obs_products_selected: Subscription | undefined = undefined;
+  products: Product[] = [];
+  products_select: Product[] = [];
 
   constructor(
     private product_service: ProductsService,
+    private sale_service: SalesService,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.obs = this.product_service.getbyUrl(null).subscribe(data => {
       this.products = data.results;
+      console.log(this.products)
     })
+
   }
 
   openDialogMount(item: any): void {
@@ -38,6 +44,7 @@ export class ListProductsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      //this.loadProducts();
       //this.animal = result;
     });
   }
