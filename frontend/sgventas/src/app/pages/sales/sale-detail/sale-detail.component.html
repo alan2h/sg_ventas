@@ -14,7 +14,7 @@
                       </nav>
                 </div>
 
-                <div *ngIf="show" class="card-body">
+                <div *ngIf="show" class="card-body" style="width: 680px;">
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -63,18 +63,19 @@
                           </nav>
                           <!-- end pagination -->
 
+                        <div *ngIf="show" class="footer_prices">
+                          <h1>Total {{ total.toString()| currency }}</h1>
+                          <input class="form-control" placeholder="Abono con ..."  type="number" name="" id="">
+                          <br>
+                          <input class="form-control" placeholder="devolver ..." disabled  type="number" name="" id="">
+                        </div>
+
                     </div>
 
-                    <br>
-                    <br>
-                    <div *ngIf="show" class="footer_prices">
-                      <h1>Total 10000</h1>
-                      <input class="form-control" placeholder="Abono con ..."  type="number" name="" id="">
-                      <br>
-                      <input class="form-control" placeholder="devolver ..." disabled  type="number" name="" id="">
-                    </div>
+
 
 
                 </div>
+
 
             </div>

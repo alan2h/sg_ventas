@@ -1,2 +1,2 @@
 
-from sales import *
+from .sales import *

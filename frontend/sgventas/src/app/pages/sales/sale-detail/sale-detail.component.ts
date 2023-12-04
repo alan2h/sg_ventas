@@ -15,6 +15,8 @@ export class SaleDetailComponent implements OnInit {
 
   public products: Product[] = [];
 
+  public total: number = 0.0;
+
   constructor(
     private dialog: MatDialog,
     private sale_service: SalesService
@@ -28,6 +30,7 @@ export class SaleDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.products = this.sale_service.getProductSelected();
+      this.total = this.sale_service.getTotal();
       console.log(this.products)
     });
   }

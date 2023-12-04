@@ -30,6 +30,7 @@ export class MountedSelectComponent implements OnInit {
     this.data.item.mount = this.mount;
     this.data.item.total_price = this.mount * this.data.item.price_sale;
     this.sale_service.addProductSelected(this.data.item);
+    this.sale_service.addTotal(this.mount * this.data.item.price_sale);
     this.mount = 1;
     this.dialogRef.close();
   }

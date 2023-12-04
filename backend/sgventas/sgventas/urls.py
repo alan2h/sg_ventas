@@ -50,6 +50,7 @@ urlpatterns = [
 urlpatterns += [
     path('products/', include('apps.products.urls'), name='products'),
     path('branches/', include('apps.branches.urls'), name='branches'),
+    path('sales/', include('apps.sales.urls'), name='sales'),
 ]
 
 urlpatterns += [
