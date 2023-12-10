@@ -28,7 +28,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let item of products">
+                              <tr *ngFor="let item of products; index as i">
                                 <td>
                                   <img *ngIf="item.photo" width="30px" height="30px"  alt="" [src]="item.photo" >
                                   <img *ngIf="!item.photo" width="30px" height="30px" src="assets/img/package.png" alt="">
@@ -42,7 +42,7 @@
                                     <i class="fa fa-plus"></i>
                                   </button>
 
-                                  <button type="button" class="btn btn-danger btn-sm">
+                                  <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
                                   </button>
                                 </td>
@@ -65,9 +65,9 @@
 
                         <div *ngIf="show" class="footer_prices">
                           <h1>Total {{ total.toString()| currency }}</h1>
-                          <input class="form-control" placeholder="Abono con ..."  type="number" name="" id="">
+                          <input [type]="'number'" class="form-control" (keyup)="changePay()" [(ngModel)]="paywith" placeholder="Abono con ..."  type="number" name="" id="">
                           <br>
-                          <input class="form-control" placeholder="devolver ..." disabled  type="number" name="" id="">
+                          <input class="form-control" [(ngModel)]="payback" placeholder="devolver ..." disabled  type="number" name="" id="">
                         </div>
 
                     </div>

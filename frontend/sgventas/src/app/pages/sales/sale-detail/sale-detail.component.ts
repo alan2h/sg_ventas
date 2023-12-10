@@ -17,12 +17,20 @@ export class SaleDetailComponent implements OnInit {
 
   public total: number = 0.0;
 
+  public paywith: number = 0;
+
+  public payback: number = 0;
+
   constructor(
     private dialog: MatDialog,
     private sale_service: SalesService
   ) { }
 
 
+  changePay(){
+    this.total = this.sale_service.getTotal();
+    this.payback = this.paywith - this.total;
+  }
 
   openDialogProductList() {
     const dialogRef = this.dialog.open(ListProductsComponent);
@@ -35,8 +43,17 @@ export class SaleDetailComponent implements OnInit {
     });
   }
 
+
+  removeItem(item: any){
+    this.sale_service.removeProductSelected(item);
+    this.products = this.sale_service.getProductSelected();
+    this.total = this.sale_service.getTotal();
+  }
+
   ngOnInit(): void {
 
   }
+
+
 
 }

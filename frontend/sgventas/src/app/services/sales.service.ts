@@ -18,12 +18,22 @@ export class SalesService {
   }
 
   addTotal(total: number): void{ this.total += total; }
+  removeTotal(total: any): void{
+    this.total -= total;
+
+  }
 
   getTotal():number { return this.total }
 
   getProductSelected(): Product[]{
     // recover list of products selected
     return this.productsSelected;
+  }
+
+  removeProductSelected(productSelected: Product) {
+    // remove product selected from memory
+    this.productsSelected = this.productsSelected.filter(p => p.id!== productSelected.id);
+    this.removeTotal(productSelected.total_price);
   }
 
 }
