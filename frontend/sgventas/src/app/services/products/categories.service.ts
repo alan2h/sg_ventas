@@ -15,7 +15,7 @@ export class CategoriesService {
 
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
     this.headers = this.headers.append('authorization', `Bearer ${localStorage.getItem('token')}`)
   }
 
@@ -30,6 +30,6 @@ export class CategoriesService {
 
   set_category(form:any){
     return this.http.post(`${environment.urlBase}/products/api/v1/categories/api/`, form, {headers: this.headers})
-  } 
+  }
 
 }

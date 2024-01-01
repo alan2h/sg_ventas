@@ -23,7 +23,7 @@ env = environ.Env(
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '../enviroments/.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -49,9 +49,7 @@ DJANGO_APPS = [
 
 THIRDS_APPS = [
     'rest_framework',
-    'django_extensions',
     'drf_yasg',
-    'silk',
     "corsheaders",
     'django_filters',
 ]
@@ -65,7 +63,6 @@ MY_APPS = [
     'apps.branches',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + THIRDS_APPS + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
