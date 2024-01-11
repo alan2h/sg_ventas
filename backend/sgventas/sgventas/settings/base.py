@@ -100,6 +100,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sgventas.wsgi.application'
 
+print(str(env('PASSWORD')))
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -111,7 +112,7 @@ DATABASES = {
         'USER': env('USERDB'),
         'HOST': env('HOST'),
         'PORT': env('PORT'),
-        'PASSWORD': '$[4C9sQl+£*3',
+        'PASSWORD': '$' + env('PASSWORD'),
     }
 }
 
