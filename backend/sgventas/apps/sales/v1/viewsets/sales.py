@@ -3,7 +3,12 @@ from django.db import transaction
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
-from apps.sales.v1.serializers import SaleSerializer, DetailSaleSerializer
+from apps.sales.v1.serializers import (
+    SaleSerializer,
+    DetailSaleSerializer,
+    SaleSerializerList
+)
+from apps.sales.constants import PaymentMethod
 from apps.sales.models import Sale, DetailSale
 from apps.branches.models import Branch
 from apps.products.models import Product
@@ -11,9 +16,15 @@ from apps.products.models import Product
 
 class SaleViewSet(viewsets.ModelViewSet):
 
-    model = Sale
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = SaleSerializer
+    queryset = Sale.objects.all()
+
+    def get_serializer(self, *args, **kwargs):
+
+        if self.action == 'retrieve':
+            return SaleSerializerList(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     @transaction.atomic
     def create(self, request):
@@ -31,11 +42,15 @@ class SaleViewSet(viewsets.ModelViewSet):
            }
         '''
         user = request.user
-
+        print(request.data.get('pay_method'))
         branch = user.branch
-        pay_method = 'CASH'
+        pay_method = PaymentMethod.DEBIT
         if request.data.get('pay_method') == 'money':
-            pay_method = 'CASH'
+            pay_method = PaymentMethod.CASH
+        if request.data.get('pay_method') == 'credit':
+            pay_method = PaymentMethod.CREDIT
+        if request.data.get('pay_method') == 'transfer':
+            pay_method = PaymentMethod.TRANSFER
         sale = Sale.objects.create(
             type_payment=pay_method,
             branch=branch

@@ -12,6 +12,7 @@ class Sale(models.Model):
         DEBIT = 'DEBIT', 'Debit'
         CREDIT = 'CREDIT', 'Credit'
         CASH = 'CASH', 'Cash'
+        TRANSFER = 'TRANSFER', 'transfer'
 
     date_sale = models.DateField(auto_now_add=True)
     hour_sale = models.TimeField(auto_now_add=True)

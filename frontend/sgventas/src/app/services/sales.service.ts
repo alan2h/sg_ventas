@@ -33,6 +33,8 @@ export class SalesService {
 
   }
 
+  removeAllProductSelected(): void{ this.productsSelected = []; }
+
   getTotal():number { return this.total }
 
   getProductSelected(): Product[]{
