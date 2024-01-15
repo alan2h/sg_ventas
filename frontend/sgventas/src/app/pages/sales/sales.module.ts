@@ -8,6 +8,7 @@ import { BarSelectionComponent } from './bar-selection/bar-selection.component';
 import { SaleDetailComponent } from './sale-detail/sale-detail.component';
 import { ListProductsComponent } from './list-products/list-products.component';
 import { MountedSelectComponent } from './mounted-select/mounted-select.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { MountedSelectComponent } from './mounted-select/mounted-select.componen
     BarSelectionComponent,
     SaleDetailComponent,
     ListProductsComponent,
-    MountedSelectComponent
+    MountedSelectComponent,
+    InvoiceComponent
   ],
   imports: [
     CommonModule,

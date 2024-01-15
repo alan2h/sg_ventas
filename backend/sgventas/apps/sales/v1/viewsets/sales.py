@@ -42,7 +42,6 @@ class SaleViewSet(viewsets.ModelViewSet):
            }
         '''
         user = request.user
-        print(request.data.get('pay_method'))
         branch = user.branch
         pay_method = PaymentMethod.DEBIT
         if request.data.get('pay_method') == 'money':
@@ -62,5 +61,9 @@ class SaleViewSet(viewsets.ModelViewSet):
                 product=product,
                 amount=detail.get('mount')
             )
-        content = {'201': 'sale is saved with success'}
+        content = {
+            'id': sale.id,
+            "date_sale": sale.date_sale,
+            "hour_sale": sale.hour_sale
+        }
         return Response(content, status=status.HTTP_201_CREATED)

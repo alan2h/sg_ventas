@@ -43,3 +43,7 @@ export interface ProductSelected {
   mount:       number;
   price:       Float32Array;
 }
+
+export interface InoviceInterface{
+  id:       number;
+}

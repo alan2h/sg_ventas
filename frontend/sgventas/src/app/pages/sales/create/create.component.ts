@@ -35,9 +35,9 @@ export class CreateComponent implements OnInit {
       'products': this.product_selected
     }
     this.saleService.setSalesService(form).subscribe(data => {
-      this.snackBar.open('Venta guardado con exito', 'cerrar');
+      this.snackBar.open('Venta guardada con exito', 'cerrar');
       this.saleService.removeAllProductSelected();
-      this.route.navigate(['/'])
+      this.route.navigate(['sales/invoice', data.id]);
     })
   }
 

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Product, ProductSelected } from '../interfaces/products';
+import { InoviceInterface, Product, ProductSelected } from '../interfaces/products';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +49,8 @@ export class SalesService {
     this.removeTotal(productSelected.total_price);
   }
 
-  setSalesService(form: any){
-    return this.http.post(`${environment.urlBase}/sales/api/v1/`, form, {headers: this.headers})
+  setSalesService(form: any):Observable<InoviceInterface>{
+    return this.http.post<InoviceInterface>(`${environment.urlBase}/sales/api/v1/`, form, {headers: this.headers})
   }
 
 }
