@@ -27,3 +27,36 @@ export interface Category{
     name:        string;
     description: string;
 }
+
+
+export interface SaleInterface {
+  id:           number;
+  details:      Detail[];
+  branch:       Branch;
+  date_sale:    Date;
+  hour_sale:    string;
+  type_payment: string;
+  client:       null;
+}
+
+export interface Branch {
+  id:          number;
+  name:        string;
+  description: string;
+}
+
+export interface Detail {
+  id:      number;
+  sale:    SaleClass;
+  amount:  number;
+  product: number;
+}
+
+export interface SaleClass {
+  id:           number;
+  date_sale:    Date;
+  hour_sale:    string;
+  type_payment: string;
+  client:       null;
+  branch:       number;
+}
