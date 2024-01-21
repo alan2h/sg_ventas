@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ListProductsComponent } from '../list-products/list-products.component';
 import { SalesService } from 'src/app/services/sales.service';
@@ -12,6 +12,7 @@ import { Product } from 'src/app/interfaces/products';
 export class SaleDetailComponent implements OnInit {
 
   @Input() show: boolean = false;
+  @Output() updateList: EventEmitter<any> = new EventEmitter();
 
   public products: Product[] = [];
 
@@ -48,6 +49,7 @@ export class SaleDetailComponent implements OnInit {
     this.sale_service.removeProductSelected(item);
     this.products = this.sale_service.getProductSelected();
     this.total = this.sale_service.getTotal();
+    this.updateList.emit('update list products');
   }
 
   ngOnInit(): void {

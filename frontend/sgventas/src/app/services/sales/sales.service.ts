@@ -17,7 +17,7 @@ export class SalesService {
     this.headers = this.headers.append('authorization', `Bearer ${localStorage.getItem('token')}`);
   }
 
-  getSale(id: number): Observable<SaleInterface>{
+  getSale(id: string): Observable<SaleInterface>{
     return this.http.get<SaleInterface>(`${environment.urlBase}/sales/api/v1/${id}/`, {'headers': this.headers})
   }
 

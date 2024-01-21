@@ -41,6 +41,11 @@ export class CreateComponent implements OnInit {
     })
   }
 
+  update(event:any){
+    console.log(event);
+    this.product_selected = this.saleService.getProductSelected();
+  }
+
   showDetail(response:any){
     console.log(response);
     this.show_sale_detail = response.show;

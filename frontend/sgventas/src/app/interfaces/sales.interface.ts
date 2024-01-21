@@ -37,6 +37,7 @@ export interface SaleInterface {
   hour_sale:    string;
   type_payment: string;
   client:       null;
+  total:        number;
 }
 
 export interface Branch {
@@ -49,7 +50,7 @@ export interface Detail {
   id:      number;
   sale:    SaleClass;
   amount:  number;
-  product: number;
+  product: Product;
 }
 
 export interface SaleClass {

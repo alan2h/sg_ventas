@@ -6,7 +6,7 @@
     </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <nav class="navbar navbar-light bg-light justify-content-between">
+            <nav *ngIf="product_selected.length > 0" class="navbar navbar-light bg-light justify-content-between">
                 <a class="navbar-brand"></a>
                 <button type="button" (click)="saveSale()" class="btn btn-outline-primary">Guardar</button>
             </nav>
@@ -16,6 +16,6 @@
       <app-bar-selection (selecTypePay)="showDetail($event)"></app-bar-selection>
     </div>
 
-  <app-sale-detail [show]="show_sale_detail"></app-sale-detail>
+  <app-sale-detail (updateList)="update($event)" [show]="show_sale_detail"></app-sale-detail>
 
 </div>
