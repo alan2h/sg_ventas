@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BaseComponent } from './shared/base/base.component';
 import { Error404Component } from './error404/error404.component';
+import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +25,10 @@ const routes: Routes = [{
     {
       path: 'sales',
       loadChildren: () => import('./sales/sales.module').then(m => m.SalesModule)
+    },
+    {
+      path: 'reports/sales',
+      component: SalesReportComponent
     },
     {
       path: '**',

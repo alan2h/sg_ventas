@@ -20,6 +20,7 @@ export interface Product {
     stock_min:   number;
     mount?: number;
     total_price?: Float32Array;
+    pk?: number;
 }
 
 export interface Brand {

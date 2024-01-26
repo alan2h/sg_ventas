@@ -22,6 +22,7 @@
                                 <th scope="col">photo</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripción</th>
+                                <th scope="col">Precio</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Precio total</th>
                                 <th scope="col">Acciones</th>
@@ -35,6 +36,7 @@
                                 </td>
                                 <td>{{ item.name }}</td>
                                 <td>{{ item.description }}</td>
+                                <td>{{ item.price_sale.toString()| currency }}</td>
                                 <td>{{ item.mount }}</td>
                                 <td>{{ item.total_price?.toString()| currency }}</td>
                                 <td>
@@ -63,7 +65,7 @@
                           </nav>
                           <!-- end pagination -->
 
-                        <div *ngIf="show" class="footer_prices">
+                        <div *ngIf="show && select_type == 'money'" class="footer_prices">
                           <h1>Total {{ total.toString()| currency }}</h1>
                           <input [type]="'number'" class="form-control" (keyup)="changePay()" [(ngModel)]="paywith" placeholder="Abono con ..."  type="number" name="" id="">
                           <br>
@@ -71,9 +73,6 @@
                         </div>
 
                     </div>
-
-
-
 
                 </div>
 

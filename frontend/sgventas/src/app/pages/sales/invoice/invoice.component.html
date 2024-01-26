@@ -7,10 +7,11 @@
         <div class="card-body mx-4">
           <div class="container">
             <p class="my-6 mx-6" style="font-size: 15px;">Gracias por su compra</p>
+            <p>Ticket no valido como factura </p>
             <div class="row">
               <ul class="list-unstyled">
                 <li *ngIf="sale?.client"  class="text-black">{{ sale?.client }}</li>
-                <li class="text-muted mt-1"><span class="text-black">Invoice</span> #{{ sale?.id }}</li>
+                <li class="text-muted mt-1"><span class="text-black">Ticket</span> #{{ sale?.id }}</li>
                 <li class="text-black mt-1">{{ sale?.date_sale }}</li>
               </ul>
               <hr>
@@ -38,6 +39,10 @@
               <hr style="border: 2px solid black;">
             </div>
             <div class="text-center" style="margin-top: 90px;">
+              <p *ngIf="sale?.type_payment == 'PaymentMethod.TRANSFER'">Pago por transferencia</p>
+              <p *ngIf="sale?.type_payment == 'PaymentMethod.DEBIT'">Pago por debito bancario</p>
+              <p *ngIf="sale?.type_payment == 'PaymentMethod.CASH'">Pago en efectivo</p>
+              <p *ngIf="sale?.type_payment == 'PaymentMethod.CREDIT'">Pago por credito bancario</p>
               <a><u class="text-info">Imprimir</u></a>
               <p>Usuario cajero. </p>
             </div>

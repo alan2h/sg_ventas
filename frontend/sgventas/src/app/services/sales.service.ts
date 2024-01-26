@@ -34,7 +34,10 @@ export class SalesService {
 
   }
 
-  removeAllProductSelected(): void{ this.productsSelected = []; }
+  removeAllProductSelected(): void{
+    this.total = 0;
+    this.productsSelected = [];
+  }
 
   getTotal():number { return this.total }
 
@@ -45,7 +48,7 @@ export class SalesService {
 
   removeProductSelected(productSelected: Product) {
     // remove product selected from memory
-    this.productsSelected = this.productsSelected.filter(p => p.id!== productSelected.id);
+    this.productsSelected = this.productsSelected.filter(p => p.pk!== productSelected.pk);
     this.removeTotal(productSelected.total_price);
   }
 

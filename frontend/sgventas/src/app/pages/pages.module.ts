@@ -14,6 +14,7 @@ import { BaseComponent } from './shared/base/base.component';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Error404Component } from './error404/error404.component';
+import { SalesReportComponent } from './reports/sales-report/sales-report.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { Error404Component } from './error404/error404.component';
     SideNavComponent,
     DashboardComponent,
     Error404Component,
+    SalesReportComponent,
   ],
   imports: [
     CommonModule,

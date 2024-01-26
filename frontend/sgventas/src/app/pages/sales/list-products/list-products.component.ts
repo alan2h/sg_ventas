@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/interfaces/products';
@@ -43,9 +43,8 @@ export class ListProductsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.loadProducts();
-      //this.animal = result;
+
+
     });
   }
 

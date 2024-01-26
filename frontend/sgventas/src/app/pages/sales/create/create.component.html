@@ -16,6 +16,6 @@
       <app-bar-selection (selecTypePay)="showDetail($event)"></app-bar-selection>
     </div>
 
-  <app-sale-detail (updateList)="update($event)" [show]="show_sale_detail"></app-sale-detail>
+  <app-sale-detail (updateList)="update($event)" [select_type]="select" [show]="show_sale_detail"></app-sale-detail>
 
 </div>

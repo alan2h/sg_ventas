@@ -12,6 +12,7 @@ import { Product } from 'src/app/interfaces/products';
 export class SaleDetailComponent implements OnInit {
 
   @Input() show: boolean = false;
+  @Input() select_type: string = '';
   @Output() updateList: EventEmitter<any> = new EventEmitter();
 
   public products: Product[] = [];
@@ -35,12 +36,9 @@ export class SaleDetailComponent implements OnInit {
 
   openDialogProductList() {
     const dialogRef = this.dialog.open(ListProductsComponent);
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       this.products = this.sale_service.getProductSelected();
       this.total = this.sale_service.getTotal();
-      console.log(this.products)
     });
   }
 
