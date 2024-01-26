@@ -1,1 +1,68 @@
-<p>sales-report works!</p>
+ <!-- Begin Page Content -->
+ <div class="container-fluid">
+
+  <!-- Page Heading -->
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-6">
+          <nav class="navbar navbar-light bg-light justify-content-between">
+              <a class="navbar-brand">Listado de ventas</a>
+              <mat-form-field>
+                <mat-label>Ingrese un rango de fechas</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date">
+                  <input matEndDate placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+            </nav>
+
+      </div>
+
+      <!-- message start -->
+
+      <!-- message end -->
+
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Codigo</th>
+                      <th scope="col">Descripción</th>
+                      <th scope="col">Stock</th>
+                      <th scope="col">Precio venta</th>
+                      <th scope="col">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+
+                      <td> product.name </td>
+                      <td> product.barcode </td>
+                      <td> product.description </td>
+                      <td> product.stock </td>
+                      <td> product.price_sale</td>
+                      <td>
+
+                        <button type="button"  style="margin-right: 3px;" class="btn btn-success btn-sm">
+                          <i class="fa fa-eye"></i>
+                        </button>
+
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- start pagination -->
+
+                <!-- end pagination -->
+          </div>
+      </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->

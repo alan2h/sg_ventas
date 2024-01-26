@@ -14,8 +14,11 @@ import { BaseComponent } from './shared/base/base.component';
 import { SideNavComponent } from './shared/side-nav/side-nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Error404Component } from './error404/error404.component';
+// reports
 import { SalesReportComponent } from './reports/sales-report/sales-report.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { SalesReportComponent } from './reports/sales-report/sales-report.compon
     MatDialogModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule
   ],
   exports:[
     MatDialogModule,
