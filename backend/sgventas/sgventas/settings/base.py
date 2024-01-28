@@ -33,6 +33,13 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
 
 
@@ -100,19 +107,21 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sgventas.wsgi.application'
 
-print(str(env('PASSWORD')))
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': env('ENGINE'),
-        'NAME': env('NAME'),
-        'USER': env('USERDB'),
-        'HOST': env('HOST'),
-        'PORT': env('PORT'),
-        'PASSWORD': '$' + env('PASSWORD'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',        # Database name
+        'USER': 'postgres',        # Database user
+        'PASSWORD': 'postgres',    # Database password
+        'HOST': 'pgdb',            # PostgreSQL service name in Docker Compose
+        'PORT': '5432',            # PostgreSQL default port
+    },
+    'db2': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -164,3 +173,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+MAILCHIMP_TRANSACTIONAL_API_KEY = 'md-a6UxbXYPNJI4mOLJyiGeBw'
+
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")

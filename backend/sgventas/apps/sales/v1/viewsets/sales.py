@@ -1,16 +1,16 @@
 from django.db import transaction
+from django.core.mail import send_mail
+from django.conf import settings
 
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 
 from apps.sales.v1.serializers import (
     SaleSerializer,
-    DetailSaleSerializer,
     SaleSerializerList
 )
 from apps.sales.constants import PaymentMethod
 from apps.sales.models import Sale, DetailSale
-from apps.branches.models import Branch
 from apps.products.models import Product
 
 
@@ -66,4 +66,11 @@ class SaleViewSet(viewsets.ModelViewSet):
             "date_sale": sale.date_sale,
             "hour_sale": sale.hour_sale
         }
+        send_mail(
+            f'Se ha realizado una venta {sale.date_sale}-{sale.hour_sale}',
+            'gracias por su compra',
+            settings.EMAIL_HOST_USER,
+            ['anonimocenter@gmail.com'],
+            fail_silently=False
+        )
         return Response(content, status=status.HTTP_201_CREATED)
