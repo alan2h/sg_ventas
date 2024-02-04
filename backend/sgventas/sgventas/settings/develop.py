@@ -1,11 +1,11 @@
 from .base import *
 
-THIRDS_APPS += [
-    'silk',
-    'django_extensions',
-]
-
 INSTALLED_APPS = DJANGO_APPS + THIRDS_APPS + MY_APPS
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=12),

@@ -3,11 +3,11 @@ from django.db import models
 # models thirds
 from apps.branches.models import Branch
 
-# managers
-from .managers import ProductActiveManager, ProductInactiveManager
+# Utilities
+from apps.utils.models import SaleModel
 
 
-class Brand(models.Model):
+class Brand(SaleModel):
 
     name = models.CharField(
         max_length=20,
@@ -23,7 +23,7 @@ class Brand(models.Model):
         return str(self.name)
 
 
-class Category(models.Model):
+class Category(SaleModel):
 
     name = models.CharField(
         max_length=20,
@@ -43,7 +43,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
-class SubCategory(models.Model):
+class SubCategory(SaleModel):
 
     category = models.ForeignKey(
         Category,
@@ -58,7 +58,7 @@ class SubCategory(models.Model):
         return str(self.name)
 
 
-class Product(models.Model):
+class Product(SaleModel):
 
     name = models.CharField(
         max_length=30
@@ -123,11 +123,8 @@ class Product(models.Model):
         help_text='no is required, but default is 21%'
     )
 
-    objects = ProductActiveManager()
-    inactive_objects = ProductInactiveManager()
 
-
-class StockBranch(models.Model):
+class StockBranch(SaleModel):
 
     product = models.ForeignKey(
         Product,

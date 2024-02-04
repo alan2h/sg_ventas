@@ -4,8 +4,11 @@ from apps.products.models import Product
 from apps.clients.models import Client
 from apps.branches.models import Branch
 
+# Utilities
+from apps.utils.models import SaleModel
 
-class Sale(models.Model):
+
+class Sale(SaleModel):
 
     class TypePayment(models.TextChoices):
 
@@ -36,7 +39,7 @@ class Sale(models.Model):
         return f"{self.client} - {self.type_payment} - {self.date_sale}"
 
 
-class DetailSale(models.Model):
+class DetailSale(SaleModel):
 
     sale = models.ForeignKey(
         Sale,

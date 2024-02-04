@@ -1,7 +1,10 @@
 from django.db import models
 
+# utilities
+from apps.utils.models import SaleModel
 
-class Branch(models.Model):
+
+class Branch(SaleModel):
 
     name = models.CharField(
         max_length=30,

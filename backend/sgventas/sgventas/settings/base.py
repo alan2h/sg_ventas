@@ -59,6 +59,8 @@ THIRDS_APPS = [
     'drf_yasg',
     "corsheaders",
     'django_filters',
+    'silk',
+    'django_extensions',
 ]
 
 MY_APPS = [
