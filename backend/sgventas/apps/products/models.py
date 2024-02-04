@@ -76,7 +76,7 @@ class Product(SaleModel):
         blank=True
     )
 
-    photo = models.ImageField(upload_to='products',
+    photo = models.ImageField(upload_to='media/products',
                               null=True,
                               blank=True)
 

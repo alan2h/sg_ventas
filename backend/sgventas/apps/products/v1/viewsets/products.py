@@ -8,6 +8,7 @@ from apps.products.v1.serializers import (BrandSerializer, CategorySerializer,
 from apps.utils.paginations import StandardResultsSetPagination
 from apps.products.filtersets import ProductFilter
 
+from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework import permissions, viewsets, status
@@ -71,8 +72,9 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductReadSerializer
     pagination_class = StandardResultsSetPagination
     parser_classes = [MultiPartParser]
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_class = ProductFilter
+    ordering_fields = '__all__'
 
     def get_serializer(self, *args, **kwargs):
         if self.action == 'list':

@@ -1,6 +1,5 @@
 from django.db import transaction
-from django.core.mail import send_mail
-from django.conf import settings
+
 
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
@@ -12,6 +11,9 @@ from apps.sales.v1.serializers import (
 from apps.sales.constants import PaymentMethod
 from apps.sales.models import Sale, DetailSale
 from apps.products.models import Product
+
+# Tasks
+from apps.sales.tasks import send_information_sale_email
 
 
 class SaleViewSet(viewsets.ModelViewSet):
@@ -41,6 +43,7 @@ class SaleViewSet(viewsets.ModelViewSet):
          'stock': 23, 'stock_min': 23, 'mount': 1, 'total_price': 23},
            }
         '''
+        total_amount = 0
         user = request.user
         branch = user.branch
         pay_method = PaymentMethod.DEBIT
@@ -56,6 +59,7 @@ class SaleViewSet(viewsets.ModelViewSet):
         )
         for detail in request.data.get('products'):
             product = Product.objects.get(id=detail['id'])
+            total_amount += product.price_sale
             DetailSale.objects.create(
                 sale=sale,
                 product=product,
@@ -66,11 +70,10 @@ class SaleViewSet(viewsets.ModelViewSet):
             "date_sale": sale.date_sale,
             "hour_sale": sale.hour_sale
         }
-        send_mail(
-            f'Se ha realizado una venta {sale.date_sale}-{sale.hour_sale}',
-            'gracias por su compra',
-            settings.EMAIL_HOST_USER,
-            ['anonimocenter@gmail.com'],
-            fail_silently=False
+        send_information_sale_email.delay(
+            sale.hour_sale,
+            sale.date_sale,
+            total_amount
         )
+        print('here no coming')
         return Response(content, status=status.HTTP_201_CREATED)
