@@ -33,15 +33,28 @@ services:
         depends_on:
             - django
             - redis
+    flower:
+        image: mher/flower:0.9.7
+        command: [ 'flower', '--broker=redis://redis:6379/0', '--port=5555' ]
+        expose:
+            - 5555
+        ports:
+            - "5555:5555"
+        depends_on:
+            - redis
     pgdb:
         image: postgres
         container_name: pgdb
         environment:
-            - POSTGRES_DB=postgres
+            - POSTGRES_DB=sg_sales
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=postgres
         volumes:
             - pgdata:/var/lib/postgresql/data/
+        expose:
+            - 5432
+        ports:
+            - "5432:5432"
     redis:
         image: "redis:alpine"
 

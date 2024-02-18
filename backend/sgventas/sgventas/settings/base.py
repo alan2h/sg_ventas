@@ -38,7 +38,7 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
 
 ALLOWED_HOSTS = [env('ALLOWED_HOSTS')]
 
@@ -61,6 +61,7 @@ THIRDS_APPS = [
     'django_filters',
     'silk',
     'django_extensions',
+    "anymail",
 ]
 
 MY_APPS = [
@@ -121,10 +122,6 @@ DATABASES = {
         'HOST': 'pgdb',            # PostgreSQL service name in Docker Compose
         'PORT': '5432',            # PostgreSQL default port
     },
-    'db2': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
 }
 
 REST_FRAMEWORK = {
@@ -176,7 +173,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-MAILCHIMP_TRANSACTIONAL_API_KEY = 'md-a6UxbXYPNJI4mOLJyiGeBw'
+# MAILCHIMP_TRANSACTIONAL_API_KEY = 'md-a6UxbXYPNJI4mOLJyiGeBw'
+
+ANYMAIL = {
+    "SENDGRID_API_KEY": "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",
+}
 
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")

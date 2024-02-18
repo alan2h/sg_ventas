@@ -2,7 +2,7 @@
  <div class="container-fluid">
 
     <!-- Page Heading -->
-    
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -29,11 +29,11 @@
                     <thead>
                       <tr>
                         <th scope="col">photo</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Descripción</th>
+                        <th scope="col">Nombre <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th scope="col">Codigo <i class="fa fa-sort" aria-hidden="true"></i></th>
+                        <th scope="col">Descripción <i class="fa fa-sort" aria-hidden="true"></i></th>
                         <th scope="col">Stock</th>
-                        <th scope="col">Precio venta</th>
+                        <th scope="col">Precio venta <i class="fa fa-sort" aria-hidden="true"></i></th>
                         <th scope="col">Acciones</th>
                       </tr>
                     </thead>
@@ -68,7 +68,7 @@
                       <li class="page-item" [ngClass]="{'disabled': list.previous == null}">
                         <a (click)="previous()" class="page-link" style="cursor: pointer;"><i class="fa fa-arrow-left"  ></i></a>
                       </li>
-                    
+
                       <li class="page-item" [ngClass]="{'disabled': list.next == null}">
                         <a (click)="next()" class="page-link" style="cursor: pointer;" ><i class="fa fa-arrow-right"></i></a>
                       </li>

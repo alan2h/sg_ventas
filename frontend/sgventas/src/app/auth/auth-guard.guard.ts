@@ -16,13 +16,15 @@ export class AuthGuardGuard implements CanActivate {
   }
 
   verifyToken(hash:string): any{
-    
+
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
 
     let token;
     token = localStorage.getItem('token');
+    console.log(state.url, 'state')
+    console.log(route, 'route')
     if (token != null){
       let verify = { token: token }
       this.loginService.verifyToken(verify).subscribe(

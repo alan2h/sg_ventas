@@ -39,7 +39,10 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', this.login_interface.access)
         localStorage.setItem('refresh', this.login_interface.refresh)
         this.router.navigate(['/'])
-      }, error => this.message_error = error.error['detail'])
+      }, error =>{
+        this.message_error = error.error['detail'];
+        this.message_error = error.error['username'];
+      })
     }
   }
 
@@ -47,7 +50,7 @@ export class LoginComponent implements OnInit {
     this.branch_service.get_branches().subscribe(
       data =>{
         this.branches = data;
-      } 
+      }
     )
   }
 
